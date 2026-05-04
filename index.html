@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>Simran’s Taste House | Glassmorphic Food Experience</title>
+  <!-- Premium Fonts: Outfit + Playfair Display -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #0a0a0a; /* fallback */
+      color: #FFF8F0;
+      scroll-behavior: smooth;
+      position: relative;
+    }
+
+    /* Background image layer - food collage */
+    .bg-food-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: brightness(0.35) contrast(1.1);
+      transform: scale(1.02);
+      animation: subtleZoom 20s infinite alternate;
+    }
+
+    /* Second overlay gradient for depth */
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 20%, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+      z-index: -1;
+    }
+
+    @keyframes subtleZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    /* Glassmorphic components */
+    .glass-card, .navbar, .category-sticky, .food-card, .about-card, .contact-card, .cart-modal {
+      background: rgba(20, 18, 16, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 245, 220, 0.2);
+      border-radius: 2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    .navbar {
+      background: rgba(13, 12, 10, 0.65);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(249, 115, 22, 0.4);
+    }
+
+    .category-sticky {
+      background: rgba(13, 12, 10, 0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: none;
+    }
+
+    .food-card {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 200, 150, 0.3);
+    }
+
+    .food-card:hover {
+      background: rgba(30, 28, 26, 0.7);
+      border-color: #F97316;
+      transform: translateY(-8px);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Typography */
+    h1, h2, h3, .logo h1, .section-title, .hero h2, .category-header {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* Navbar */
+    .navbar {
+      padding: 0.9rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+
+    .logo h1 {
+      font-size: 1.7rem;
+      background: linear-gradient(135deg, #F97316, #FFB347);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo p {
+      font-size: 0.7rem;
+      color: #FFD7A0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #FFF5E6;
+      transition: 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #F97316; }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #F97316;
+    }
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -12px;
+      background: #E63946;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: bold;
+      border-radius: 30px;
+      padding: 0.1rem 0.45rem;
+      min-width: 18px;
+      text-align: center;
+    }
+
+    /* Sticky Category Bar */
+    .category-sticky {
+      position: sticky;
+      top: 72px;
+      z-index: 150;
+      padding: 0.8rem 0;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+    .category-track {
+      display: inline-flex;
+      gap: 0.8rem;
+      padding: 0 1.5rem;
+    }
+    .cat-chip {
+      background: rgba(35, 32, 28, 0.7);
+      backdrop-filter: blur(4px);
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #FFF2E0;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cat-chip i { color: #F97316; }
+    .cat-chip.active, .cat-chip:hover {
+      background: #F97316;
+      color: #0D0C0A;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 3rem;
+    }
+    .hero-badge {
+      background: rgba(249, 115, 22, 0.3);
+      backdrop-filter: blur(5px);
+      display: inline-block;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 500;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .btn-wa {
+      background: #25D366;
+      color: #0D0C0A;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.2s;
+      text-decoration: none;
+      box-shadow: 0 6px 14px rgba(37,211,102,0.3);
+    }
+
+    /* Menu Sections */
+    .menu-section {
+      margin: 2.5rem 0 3rem;
+      scroll-margin-top: 100px;
+    }
+    .category-header {
+      font-size: 2rem;
+      margin-bottom: 1.8rem;
+      border-left: 6px solid #F97316;
+      padding-left: 1rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 1.8rem;
+      border-top-right-radius: 1.8rem;
+      transition: transform 0.3s;
+    }
+    .food-card:hover .card-img {
+      transform: scale(1.02);
+    }
+    .card-content {
+      padding: 1.2rem;
+    }
+    .veg-badge, .nonveg-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+    }
+    .veg-badge { background: #2B5E2E; color: #C8E6C9; }
+    .nonveg-badge { background: #9C2E2E; color: #FFCDD2; }
+    .item-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .price-row {
+      margin: 12px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .price-tag {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      padding: 0.25rem 0.9rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #FFDCA8;
+    }
+    .action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .btn-sm {
+      background: #F97316;
+      border: none;
+      padding: 0.45rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #0D0C0A;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn-sm-wa { background: #25D366; color: #0D0C0A; }
+    .add-cart-btn { background: rgba(45, 36, 30, 0.8); color: #FFE6C7; border: 1px solid #F97316; }
+
+    /* About + Contact Glass */
+    .about-card, .contact-card {
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .map-placeholder {
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(6px);
+      border-radius: 1.2rem;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    footer {
+      background: rgba(8,7,6,0.8);
+      backdrop-filter: blur(8px);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(249,115,22,0.3);
+    }
+
+    /* Cart Modal Glass */
+    .cart-modal {
+      background: rgba(20, 18, 16, 0.85);
+      backdrop-filter: blur(20px);
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 28px 28px 0 0;
+      padding: 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .cart-modal.open { transform: translateY(0);}
+    .cart-overlay {
+      position: fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+      z-index: 999;
+      visibility: hidden;
+      opacity:0;
+      transition:0.2s;
+    }
+    .cart-overlay.open { visibility: visible; opacity:1;}
+
+    .sticky-order {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #F97316;
+      width: 58px;
+      height: 58px;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(249,115,22,0.5);
+      cursor: pointer;
+      z-index: 90;
+      font-size: 1.7rem;
+      color: #0D0C0A;
+      backdrop-filter: blur(4px);
+      border: none;
+    }
+
+    @media (max-width: 640px) {
+      .navbar { flex-direction: column; }
+      .hero h2 { font-size: 2rem; }
+      .category-sticky { top: 110px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background food layer (multiple high-res food images) -->
+<div class="bg-food-layer"></div>
+<div class="bg-overlay"></div>
+
+<div class="navbar">
+  <div class="logo">
+    <h1>Simran’s Taste House</h1>
+    <p>Fresh • Homemade • Hygienic</p>
+  </div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#menu-start">Menu</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <div class="cart-icon" id="cartIcon">
+      <i class="fas fa-bag-shopping"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+  </div>
+</div>
+
+<!-- Sticky Category Bar -->
+<div class="category-sticky" id="stickyCategories">
+  <div class="category-track" id="categoryTrack"></div>
+</div>
+
+<main>
+  <section id="home">
+    <div class="hero">
+      <div class="hero-badge">✨ Artisanal Homemade Kitchen ✨</div>
+      <h2>Fresh • Homemade • Hygienic</h2>
+      <p>Affordable meals for students, families & professionals — Lamptibahal, Brajarajnagar</p>
+      <a href="https://wa.me/919040804333?text=Hi%20Simran%E2%80%99s%20Taste%20House%2C%20I%20want%20to%20order%20delicious%20homemade%20food!" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Order Now on WhatsApp</a>
+    </div>
+  </section>
+
+  <div class="container" id="menu-start">
+    <div id="menuContainer"></div>
+  </div>
+
+  <div class="container" id="about">
+    <div class="about-card glass-card">
+      <h3 style="color:#F97316;"><i class="fas fa-heart"></i> About Simran’s Kitchen</h3>
+      <p style="margin-top:0.8rem;">📍 <strong>Lamptibahal, Brajarajnagar</strong> — Every meal is prepared like home, with pure love and hygiene. We serve fresh, nutritious, and affordable food to students, families, and working professionals. No preservatives, just authentic desi taste.</p>
+      <p>⭐ 100% Hygienic | Homemade Spices | Pocket-friendly ⭐</p>
+    </div>
+  </div>
+  <div class="container" id="contact">
+    <div class="contact-card glass-card">
+      <h3><i class="fas fa-phone-alt"></i> Contact & Order</h3>
+      <p><i class="fas fa-phone"></i> <a href="tel:+919040804333" style="color:#F97316; text-decoration:none;">+91 90408 04333</a></p>
+      <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/919040804333" target="_blank" style="color:#25D366;">WhatsApp Direct (Quick Order)</a></p>
+      <div class="map-placeholder">
+        <i class="fas fa-location-dot"></i> 📍 Lamptibahal, Brajarajnagar, Odisha — Near Hanuman Mandir
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+  <p>© 2025 Simran’s Taste House — Homemade goodness delivered with care.</p>
+  <p><i class="fab fa-whatsapp"></i> Order on WhatsApp: +91 90408 04333</p>
+</footer>
+
+<div class="sticky-order" id="stickyCartBtn">
+  <i class="fas fa-shopping-cart"></i>
+</div>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-modal" id="cartModal">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h3><i class="fas fa-bag-shopping"></i> Your Cart</h3>
+    <i class="fas fa-times" id="closeCart" style="font-size:1.4rem; cursor:pointer;"></i>
+  </div>
+  <div id="cartItemsList"></div>
+  <div style="margin: 1rem 0; font-weight: bold; font-size:1.2rem;" id="cartTotal">Total: ₹0</div>
+  <button id="checkoutCartBtn" class="btn-wa" style="width:100%; justify-content:center;"><i class="fab fa-whatsapp"></i> Place Order via WhatsApp</button>
+  <button id="clearCartBtn" style="margin-top: 0.8rem; background:#2A241E; border:none; padding:0.6rem; width:100%; border-radius:40px; color:#F5EEDC;">Clear Cart</button>
+</div>
+
+<script>
+  // ------------- COMPLETE MENU DATA WITH REAL IMAGE QUERIES -------------
+  const menuData = {
+    "🍽 ROTI & PARATHA": [
+      { name: "Plain Roti", price: 7, isVeg: true, variant: "per piece", imgQuery: "plain roti indian bread" },
+      { name: "Ghee Roti", price: 12, isVeg: true, variant: "per piece", imgQuery: "ghee roti" },
+      { name: "Aloo Paratha", price: 20, isVeg: true, variant: "per piece", imgQuery: "aloo paratha" },
+      { name: "Sattu Paratha", price: 20, isVeg: true, variant: "per piece", imgQuery: "sattu paratha" }
+    ],
+    "🍚 RICE": [
+      { name: "Plain Rice", price: 40, isVeg: true, variant: "Full", imgQuery: "steamed basmati rice bowl" }
+    ],
+    "🍱 MEALS": [
+      { name: "Veg Meal", price: 80, isVeg: true, variant: "Full", desc: "Rice + Dal + Sabji + Bhaja + Papad + Salad", imgQuery: "indian veg thali" },
+      { name: "Chicken Meal", price: 120, isVeg: false, variant: "Full", desc: "Rice + Dal + Chicken Curry + Bhaja + Papad + Salad", imgQuery: "chicken curry thali" }
+    ],
+    "🥗 VEG ITEMS": [
+      { name: "Mix Veg", priceHalf: 60, priceFull: 100, isVeg: true, imgQuery: "mixed vegetable curry indian" },
+      { name: "Aloo Bhujia", priceHalf: 40, priceFull: 40, isVeg: true, imgQuery: "aloo bhujia fry" },
+      { name: "Aloo Chokha", priceHalf: 40, priceFull: 40, isVeg: true, imgQuery: "aloo chokha" },
+      { name: "Baingan Bharta", priceHalf: 50, priceFull: 50, isVeg: true, imgQuery: "baingan bharta" },
+      { name: "Aloo Dum", priceHalf: 50, priceFull: 50, isVeg: true, imgQuery: "aloo dum spicy" },
+      { name: "Tamatar Chutney", priceHalf: 40, priceFull: 40, isVeg: true, imgQuery: "tomato chutney" },
+      { name: "Paneer Masala", priceHalf: 90, priceFull: 160, isVeg: true, imgQuery: "paneer masala gravy" },
+      { name: "Palak Paneer", priceHalf: 100, priceFull: 180, isVeg: true, imgQuery: "palak paneer" },
+      { name: "Mushroom Masala", priceHalf: 90, priceFull: 160, isVeg: true, imgQuery: "mushroom masala curry" },
+      { name: "Dal Fry", priceHalf: 60, priceFull: 120, isVeg: true, imgQuery: "dal fry tadka" },
+      { name: "Dal Tadka", priceHalf: 80, priceFull: 140, isVeg: true, imgQuery: "dal tadka indian" }
+    ],
+    "🍗 NON-VEG": [
+      { name: "Egg Fry", priceHalf: 50, priceFull: 80, isVeg: false, imgQuery: "egg fry indian style" },
+      { name: "Egg Bhurji", priceHalf: 50, priceFull: 90, isVeg: false, imgQuery: "egg bhurji" },
+      { name: "Egg Curry", priceHalf: 80, priceFull: 130, isVeg: false, imgQuery: "egg curry indian" },
+      { name: "Chicken Curry", priceHalf: 100, priceFull: 180, isVeg: false, imgQuery: "chicken curry indian home" }
+    ]
+  };
+
+  function getImageUrl(query) {
+    return `https://source.unsplash.com/featured/400x240/?${encodeURIComponent(query)}`;
+  }
+
+  // Cart management
+  let cart = [];
+  function loadCart() { const s = localStorage.getItem("simran_cart_glass"); if(s) cart = JSON.parse(s); else cart=[]; updateCartUI(); }
+  function saveCart() { localStorage.setItem("simran_cart_glass", JSON.stringify(cart)); updateCartUI(); }
+  function updateCartUI() {
+    const count = cart.reduce((s,i)=> s+i.qty,0);
+    document.getElementById('cartCount').innerText = count;
+    renderCartModal();
+  }
+  function addToCart(name, price, variant) {
+    const existing = cart.find(i => i.name === name && i.variant === variant);
+    if(existing) existing.qty += 1;
+    else cart.push({ name, price, variant, qty: 1 });
+    saveCart();
+    showToast(`✓ ${name} (${variant}) added`);
+  }
+  function showToast(msg) {
+    let t = document.createElement('div');
+    t.innerText = msg; t.style.position='fixed'; t.style.bottom='100px'; t.style.left='20px'; t.style.background='#F97316'; t.style.color='#0D0C0A'; t.style.padding='0.6rem 1.2rem'; t.style.borderRadius='40px'; t.style.zIndex='1000'; t.style.fontWeight='bold'; t.style.backdropFilter='blur(8px)';
+    document.body.appendChild(t); setTimeout(()=>t.remove(),1800);
+  }
+  function renderCartModal() {
+    const container = document.getElementById('cartItemsList');
+    if(!container) return;
+    if(cart.length===0) { container.innerHTML='<p style="color:#EEDDCC;">Your cart is empty. Add delicious items!</p>'; document.getElementById('cartTotal').innerHTML='Total: ₹0'; return; }
+    let html=''; let total=0;
+    cart.forEach((item,idx)=>{
+      const itotal = item.price*item.qty; total+=itotal;
+      html+=`<div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,200,150,0.3); padding:0.8rem 0;">
+        <div><strong>${item.name}</strong> (${item.variant}) x${item.qty}<br><span style="font-size:0.75rem;">₹${item.price} each</span></div>
+        <div><button class="cart-qty" data-idx="${idx}" data-delta="-1" style="background:#3A2E26; border:none; width:28px; border-radius:20px; color:white;">-</button>
+        <span style="margin:0 6px;">${item.qty}</span>
+        <button class="cart-qty" data-idx="${idx}" data-delta="1" style="background:#3A2E26; border:none; width:28px; border-radius:20px; color:white;">+</button>
+        <button class="cart-remove" data-idx="${idx}" style="margin-left:8px; background:none; border:none; color:#E63946;"><i class="fas fa-trash-alt"></i></button></div>
+      </div>`;
+    });
+    container.innerHTML=html;
+    document.getElementById('cartTotal').innerHTML=`Total: ₹${total}`;
+    document.querySelectorAll('.cart-qty').forEach(btn=>{
+      btn.addEventListener('click',(e)=>{
+        const idx=parseInt(btn.dataset.idx); const delta=parseInt(btn.dataset.delta);
+        if(cart[idx]){ cart[idx].qty+=delta; if(cart[idx].qty<=0) cart.splice(idx,1); saveCart(); renderCartModal(); }
+      });
+    });
+    document.querySelectorAll('.cart-remove').forEach(btn=>{
+      btn.addEventListener('click',()=>{ const idx=parseInt(btn.dataset.idx); cart.splice(idx,1); saveCart(); renderCartModal(); });
+    });
+  }
+  function clearCart(){ cart=[]; saveCart(); renderCartModal(); showToast("Cart cleared"); }
+  function checkoutCartWhatsApp(){
+    if(cart.length===0){ alert("Your cart is empty! Add items to order."); return; }
+    let msg = "🍽️ Simran’s Taste House Order:\n";
+    let total=0;
+    cart.forEach(i=>{ msg+=`• ${i.name} (${i.variant}) x${i.qty} = ₹${i.price*i.qty}\n`; total+=i.price*i.qty; });
+    msg+=`\n💰 Total: ₹${total}\n📍 Delivery: Lamptibahal, Brajarajnagar`;
+    window.open(`https://wa.me/919040804333?text=${encodeURIComponent(msg)}`,'_blank');
+  }
+  function directWhatsApp(itemName, price, variant){
+    window.open(`https://wa.me/919040804333?text=${encodeURIComponent(`Hi, I want to order: ${itemName} (${variant}) - ₹${price} from Simran’s Taste House`)}`,'_blank');
+  }
+
+  // Render Menu
+  function renderFullMenu() {
+    const container = document.getElementById('menuContainer');
+    if(!container) return;
+    container.innerHTML = '';
+    let sectionIndex = 0;
+    for(const [catName, items] of Object.entries(menuData)){
+      const sectionDiv = document.createElement('div');
+      sectionDiv.className = 'menu-section';
+      sectionDiv.id = `cat-${sectionIndex}`;
+      sectionDiv.innerHTML = `<div class="category-header"><i class="fas fa-utensils"></i> ${catName}</div><div class="card-grid" id="grid-${sectionIndex}"></div>`;
+      container.appendChild(sectionDiv);
+      const grid = sectionDiv.querySelector('.card-grid');
+      items.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'food-card glass-card';
+        let imageUrl = getImageUrl(item.imgQuery || (item.name + " indian food"));
+        let priceHtml = '', actionHtml = '', descHtml = item.desc ? `<small style="display:block; color:#FFD9A5; margin-top:4px;">${item.desc}</small>` : '';
+        if(item.price !== undefined){
+          priceHtml = `<div class="price-row"><span class="price-tag">₹${item.price}</span></div>`;
+          actionHtml = `<div class="action-buttons">
+            <button class="btn-sm btn-sm-wa wa-order" data-name="${item.name}" data-price="${item.price}" data-variant="${item.variant}"><i class="fab fa-whatsapp"></i> Order</button>
+            <button class="btn-sm add-cart-btn cart-add" data-name="${item.name}" data-price="${item.price}" data-variant="${item.variant}"><i class="fas fa-cart-plus"></i> Cart</button>
+          </div>`;
+        } else {
+          priceHtml = `<div class="price-row"><span class="price-tag">Half: ₹${item.priceHalf}</span><span class="price-tag">Full: ₹${item.priceFull}</span></div>`;
+          actionHtml = `<div class="action-buttons">
+            <button class="btn-sm btn-sm-wa wa-half" data-name="${item.name}" data-price="${item.priceHalf}" data-variant="Half"><i class="fab fa-whatsapp"></i> Half</button>
+            <button class="btn-sm btn-sm-wa wa-full" data-name="${item.name}" data-price="${item.priceFull}" data-variant="Full"><i class="fab fa-whatsapp"></i> Full</button>
+            <button class="btn-sm add-cart-btn cart-half" data-name="${item.name}" data-price="${item.priceHalf}" data-variant="Half">+ Half</button>
+            <button class="btn-sm add-cart-btn cart-full" data-name="${item.name}" data-price="${item.priceFull}" data-variant="Full">+ Full</button>
+          </div>`;
+        }
+        card.innerHTML = `
+          <img class="card-img" src="${imageUrl}" alt="${item.name}" loading="lazy" onerror="this.src='https://placehold.co/400x240/2A241E/F97316?text=${encodeURIComponent(item.name)}'">
+          <div class="card-content">
+            <div class="card-header">
+              <span class="item-name">${item.name}</span>
+              <span class="${item.isVeg ? 'veg-badge' : 'nonveg-badge'}">${item.isVeg ? 'Veg' : 'Non-Veg'}</span>
+            </div>
+            ${descHtml}
+            ${priceHtml}
+            ${actionHtml}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      // attach events
+      const currGrid = grid;
+      currGrid.querySelectorAll('.wa-order, .wa-half, .wa-full').forEach(btn => {
+        btn.addEventListener('click', () => directWhatsApp(btn.dataset.name, parseInt(btn.dataset.price), btn.dataset.variant));
+      });
+      currGrid.querySelectorAll('.cart-add, .cart-half, .cart-full').forEach(btn => {
+        btn.addEventListener('click', () => addToCart(btn.dataset.name, parseInt(btn.dataset.price), btn.dataset.variant));
+      });
+      sectionIndex++;
+    }
+    // Intersection Observer for glass fade-in
+    const cards = document.querySelectorAll('.food-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.style.opacity = '1'; });
+    }, { threshold: 0.1 });
+    cards.forEach(card => { card.style.opacity = '0'; card.style.transition = 'opacity 0.6s ease'; observer.observe(card); });
+  }
+
+  // Build sticky category chips
+  function buildCategoryBar() {
+    const track = document.getElementById('categoryTrack');
+    if(!track) return;
+    const categories = Object.keys(menuData);
+    track.innerHTML = '';
+    categories.forEach((cat, idx) => {
+      const chip = document.createElement('div');
+      chip.className = 'cat-chip';
+      chip.innerHTML = `<i class="fas fa-${idx===0?'bread-slice':idx===1?'bowl-rice':idx===2?'plate-wheat':idx===3?'carrot':'drumstick'}"></i> ${cat}`;
+      chip.addEventListener('click', () => {
+        document.getElementById(`cat-${idx}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+      track.appendChild(chip);
+    });
+    window.addEventListener('scroll', () => {
+      const sections = Array.from(document.querySelectorAll('.menu-section'));
+      let current = '';
+      for(let sec of sections){
+        const rect = sec.getBoundingClientRect();
+        if(rect.top <= 130 && rect.bottom >= 100) { current = sec.querySelector('.category-header')?.innerText || ''; break; }
+      }
+      document.querySelectorAll('.cat-chip').forEach((chip, i) => {
+        if(current.includes(chip.innerText.split('🍽')[0])) chip.classList.add('active');
+        else chip.classList.remove('active');
+      });
+    });
+  }
+
+  function initModal() {
+    const cartIcon = document.getElementById('cartIcon'), sticky = document.getElementById('stickyCartBtn');
+    const modal = document.getElementById('cartModal'), overlay = document.getElementById('cartOverlay');
+    const close = document.getElementById('closeCart');
+    const open = () => { modal.classList.add('open'); overlay.classList.add('open'); };
+    const closeModal = () => { modal.classList.remove('open'); overlay.classList.remove('open'); };
+    cartIcon?.addEventListener('click', open); sticky?.addEventListener('click', open);
+    close?.addEventListener('click', closeModal); overlay?.addEventListener('click', closeModal);
+    document.getElementById('checkoutCartBtn')?.addEventListener('click', () => { checkoutCartWhatsApp(); closeModal(); });
+    document.getElementById('clearCartBtn')?.addEventListener('click', () => clearCart());
+  }
+
+  loadCart();
+  renderFullMenu();
+  buildCategoryBar();
+  initModal();
+</script>
+</body>
+</html>
