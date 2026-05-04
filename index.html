@@ -3,8 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-  <title>Simran’s Taste House | Glassmorphic Food Experience</title>
-  <!-- Premium Fonts: Outfit + Playfair Display -->
+  <title>Simran’s Taste House - Fresh Homemade Food in Brajarajnagar | Order on WhatsApp</title>
+  <meta name="description" content="Order authentic homemade meals in Lamptibahal, Brajarajnagar. Fresh, hygienic & affordable. Veg/Non-veg thalis, parathas, curries. Get delivery with UPI payment.">
+  <meta name="keywords" content="homemade food Brajarajnagar, affordable meals Lamptibahal, Simran Taste House, veg meal, chicken curry, UPI payment, food delivery">
+  <meta name="author" content="Simran Shah">
+  <meta property="og:title" content="Simran’s Taste House - Fresh • Homemade • Hygienic">
+  <meta property="og:description" content="Best homemade food in Lamptibahal, Brajarajnagar. Order delicious roti, rice, meals & curries. Pay via UPI. Fast delivery.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200&auto=format">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://simranstastehouse.com">
+  <!-- JSON-LD Structured Data for Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Simran’s Taste House",
+    "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Lamptibahal, Brajarajnagar",
+      "addressLocality": "Brajarajnagar",
+      "addressRegion": "Odisha",
+      "addressCountry": "IN"
+    },
+    "priceRange": "₹",
+    "servesCuisine": "Indian, Homestyle",
+    "telephone": "+919040804333",
+    "openingHours": "Mo-Su 10:00-21:00"
+  }
+  </script>
+  <!-- Premium Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -16,13 +45,13 @@
 
     body {
       font-family: 'Outfit', sans-serif;
-      background: #0a0a0a; /* fallback */
+      background: #0a0a0a;
       color: #FFF8F0;
       scroll-behavior: smooth;
       position: relative;
     }
 
-    /* Background image layer - food collage */
+    /* Background food layer */
     .bg-food-layer {
       position: fixed;
       top: 0;
@@ -35,11 +64,9 @@
       background-position: center;
       background-repeat: no-repeat;
       filter: brightness(0.35) contrast(1.1);
-      transform: scale(1.02);
       animation: subtleZoom 20s infinite alternate;
     }
 
-    /* Second overlay gradient for depth */
     .bg-overlay {
       position: fixed;
       top: 0;
@@ -56,7 +83,7 @@
     }
 
     /* Glassmorphic components */
-    .glass-card, .navbar, .category-sticky, .food-card, .about-card, .contact-card, .cart-modal {
+    .glass-card, .navbar, .category-sticky, .food-card, .about-card, .contact-card, .reviews-card, .cart-modal {
       background: rgba(20, 18, 16, 0.55);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -94,14 +121,12 @@
       padding: 0 1.5rem;
     }
 
-    /* Typography */
     h1, h2, h3, .logo h1, .section-title, .hero h2, .category-header {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
 
-    /* Navbar */
     .navbar {
       padding: 0.9rem 2rem;
       display: flex;
@@ -159,7 +184,6 @@
       text-align: center;
     }
 
-    /* Sticky Category Bar */
     .category-sticky {
       position: sticky;
       top: 72px;
@@ -168,7 +192,6 @@
       overflow-x: auto;
       white-space: nowrap;
       scrollbar-width: thin;
-      -webkit-overflow-scrolling: touch;
     }
     .category-track {
       display: inline-flex;
@@ -182,36 +205,23 @@
       border-radius: 40px;
       font-weight: 600;
       font-size: 0.85rem;
-      color: #FFF2E0;
       cursor: pointer;
-      transition: all 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 8px;
     }
     .cat-chip i { color: #F97316; }
-    .cat-chip.active, .cat-chip:hover {
-      background: #F97316;
-      color: #0D0C0A;
-    }
+    .cat-chip.active, .cat-chip:hover { background: #F97316; color: #0D0C0A; }
 
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding: 3rem 1rem 3rem;
-    }
+    .hero { text-align: center; padding: 3rem 1rem 3rem; }
     .hero-badge {
       background: rgba(249, 115, 22, 0.3);
       backdrop-filter: blur(5px);
       display: inline-block;
       padding: 0.3rem 1.2rem;
       border-radius: 40px;
-      font-weight: 500;
     }
-    .hero h2 {
-      font-size: 3rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    }
+    .hero h2 { font-size: 3rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
     .btn-wa {
       background: #25D366;
       color: #0D0C0A;
@@ -221,12 +231,9 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      transition: 0.2s;
       text-decoration: none;
       box-shadow: 0 6px 14px rgba(37,211,102,0.3);
     }
-
-    /* Menu Sections */
     .menu-section {
       margin: 2.5rem 0 3rem;
       scroll-margin-top: 100px;
@@ -237,45 +244,28 @@
       border-left: 6px solid #F97316;
       padding-left: 1rem;
     }
-
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 1.8rem;
     }
-
     .card-img {
       width: 100%;
       height: 180px;
       object-fit: cover;
       border-top-left-radius: 1.8rem;
       border-top-right-radius: 1.8rem;
-      transition: transform 0.3s;
     }
-    .food-card:hover .card-img {
-      transform: scale(1.02);
-    }
-    .card-content {
-      padding: 1.2rem;
-    }
+    .card-content { padding: 1.2rem; }
     .veg-badge, .nonveg-badge {
       font-size: 0.7rem;
-      font-weight: 700;
       padding: 0.2rem 0.8rem;
       border-radius: 30px;
     }
     .veg-badge { background: #2B5E2E; color: #C8E6C9; }
     .nonveg-badge { background: #9C2E2E; color: #FFCDD2; }
-    .item-name {
-      font-size: 1.2rem;
-      font-weight: 700;
-    }
-    .price-row {
-      margin: 12px 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .item-name { font-size: 1.2rem; font-weight: 700; }
+    .price-row { margin: 12px 0; display: flex; flex-wrap: wrap; gap: 8px; }
     .price-tag {
       background: rgba(0,0,0,0.5);
       backdrop-filter: blur(4px);
@@ -298,20 +288,76 @@
       border-radius: 40px;
       font-size: 0.75rem;
       font-weight: 600;
-      color: #0D0C0A;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
     }
     .btn-sm-wa { background: #25D366; color: #0D0C0A; }
     .add-cart-btn { background: rgba(45, 36, 30, 0.8); color: #FFE6C7; border: 1px solid #F97316; }
-
-    /* About + Contact Glass */
-    .about-card, .contact-card {
+    
+    /* Enhanced About section */
+    .about-card {
       padding: 2rem;
       margin: 2rem 0;
     }
+    .owner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(249,115,22,0.2);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      margin-top: 1rem;
+    }
+    /* Reviews section */
+    .reviews-card {
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    .review-item {
+      background: rgba(0,0,0,0.3);
+      border-radius: 1.2rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #F97316;
+    }
+    .reviewer-name {
+      font-weight: 700;
+      color: #FFD7A0;
+    }
+    .rating {
+      color: #FFB347;
+      margin: 6px 0;
+    }
+    .rating i {
+      margin-right: 2px;
+    }
+    .review-text {
+      font-size: 0.9rem;
+      color: #EEDDCC;
+    }
+    .add-review {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,200,150,0.3);
+    }
+    .add-review input, .add-review textarea, .add-review select {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      border-radius: 1rem;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid #F97316;
+      color: white;
+    }
+    .btn-submit-review {
+      background: #F97316;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      color: #0D0C0A;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .contact-card { padding: 2rem; margin: 2rem 0; }
     .map-placeholder {
       background: rgba(0,0,0,0.4);
       backdrop-filter: blur(6px);
@@ -319,7 +365,6 @@
       padding: 1rem;
       text-align: center;
     }
-
     footer {
       background: rgba(8,7,6,0.8);
       backdrop-filter: blur(8px);
@@ -328,8 +373,7 @@
       font-size: 0.8rem;
       border-top: 1px solid rgba(249,115,22,0.3);
     }
-
-    /* Cart Modal Glass */
+    /* Cart modal */
     .cart-modal {
       background: rgba(20, 18, 16, 0.85);
       backdrop-filter: blur(20px);
@@ -342,10 +386,10 @@
       transform: translateY(100%);
       transition: transform 0.3s ease;
       z-index: 1000;
-      max-height: 80vh;
+      max-height: 85vh;
       overflow-y: auto;
     }
-    .cart-modal.open { transform: translateY(0);}
+    .cart-modal.open { transform: translateY(0); }
     .cart-overlay {
       position: fixed;
       top:0;
@@ -359,8 +403,26 @@
       opacity:0;
       transition:0.2s;
     }
-    .cart-overlay.open { visibility: visible; opacity:1;}
-
+    .cart-overlay.open { visibility: visible; opacity:1; }
+    .address-field { margin: 1rem 0; }
+    .address-field label { display: block; font-size: 0.8rem; margin-bottom: 6px; color: #FFD9A5; }
+    .address-field input, .address-field textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 1rem;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid #F97316;
+      color: white;
+      font-family: inherit;
+    }
+    .upi-section {
+      background: rgba(0,0,0,0.4);
+      border-radius: 1rem;
+      padding: 1rem;
+      margin: 1rem 0;
+      text-align: center;
+    }
+    .btn-upi-pay { background: #6A1B9A; margin-top: 8px; width: 100%; }
     .sticky-order {
       position: fixed;
       bottom: 25px;
@@ -377,10 +439,7 @@
       z-index: 90;
       font-size: 1.7rem;
       color: #0D0C0A;
-      backdrop-filter: blur(4px);
-      border: none;
     }
-
     @media (max-width: 640px) {
       .navbar { flex-direction: column; }
       .hero h2 { font-size: 2rem; }
@@ -390,7 +449,6 @@
 </head>
 <body>
 
-<!-- Background food layer (multiple high-res food images) -->
 <div class="bg-food-layer"></div>
 <div class="bg-overlay"></div>
 
@@ -403,6 +461,7 @@
     <a href="#home">Home</a>
     <a href="#menu-start">Menu</a>
     <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
     <a href="#contact">Contact</a>
     <div class="cart-icon" id="cartIcon">
       <i class="fas fa-bag-shopping"></i>
@@ -411,7 +470,6 @@
   </div>
 </div>
 
-<!-- Sticky Category Bar -->
 <div class="category-sticky" id="stickyCategories">
   <div class="category-track" id="categoryTrack"></div>
 </div>
@@ -422,7 +480,7 @@
       <div class="hero-badge">✨ Artisanal Homemade Kitchen ✨</div>
       <h2>Fresh • Homemade • Hygienic</h2>
       <p>Affordable meals for students, families & professionals — Lamptibahal, Brajarajnagar</p>
-      <a href="https://wa.me/919040804333?text=Hi%20Simran%E2%80%99s%20Taste%20House%2C%20I%20want%20to%20order%20delicious%20homemade%20food!" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Order Now on WhatsApp</a>
+      <a href="https://wa.me/919040804333?text=Hi%20Simran%E2%80%99s%20Taste%20House%2C%20I%20want%20to%20place%20an%20order" target="_blank" class="btn-wa"><i class="fab fa-whatsapp"></i> Order Now on WhatsApp</a>
     </div>
   </section>
 
@@ -430,13 +488,42 @@
     <div id="menuContainer"></div>
   </div>
 
+  <!-- Enhanced About Section with Owner Details -->
   <div class="container" id="about">
     <div class="about-card glass-card">
       <h3 style="color:#F97316;"><i class="fas fa-heart"></i> About Simran’s Kitchen</h3>
       <p style="margin-top:0.8rem;">📍 <strong>Lamptibahal, Brajarajnagar</strong> — Every meal is prepared like home, with pure love and hygiene. We serve fresh, nutritious, and affordable food to students, families, and working professionals. No preservatives, just authentic desi taste.</p>
       <p>⭐ 100% Hygienic | Homemade Spices | Pocket-friendly ⭐</p>
+      <div class="owner-badge">
+        <i class="fas fa-crown"></i> Owner & Founder: <strong>Simran Shah</strong>
+      </div>
+      <p style="margin-top: 0.8rem;"><i class="fas fa-quote-left"></i> Cooking is my passion, and serving you healthy, homemade food is my mission. Every dish is made with the same care as I would for my own family. — Simran Shah</p>
     </div>
   </div>
+
+  <!-- Customer Reviews & Ratings Section -->
+  <div class="container" id="reviews">
+    <div class="reviews-card glass-card">
+      <h3 style="color:#F97316;"><i class="fas fa-star"></i> Customer Reviews & Ratings</h3>
+      <div id="reviewsList">
+        <!-- Dynamic reviews will appear here -->
+      </div>
+      <div class="add-review">
+        <h4><i class="fas fa-pen-alt"></i> Share Your Experience</h4>
+        <input type="text" id="reviewerName" placeholder="Your Name" value="Guest">
+        <select id="reviewRating">
+          <option value="5">⭐ 5 - Excellent</option>
+          <option value="4">⭐ 4 - Very Good</option>
+          <option value="3">⭐ 3 - Good</option>
+          <option value="2">⭐ 2 - Average</option>
+          <option value="1">⭐ 1 - Poor</option>
+        </select>
+        <textarea id="reviewText" rows="2" placeholder="Write your review..."></textarea>
+        <button class="btn-submit-review" id="submitReviewBtn"><i class="fas fa-paper-plane"></i> Submit Review</button>
+      </div>
+    </div>
+  </div>
+
   <div class="container" id="contact">
     <div class="contact-card glass-card">
       <h3><i class="fas fa-phone-alt"></i> Contact & Order</h3>
@@ -448,9 +535,11 @@
     </div>
   </div>
 </main>
+
 <footer>
-  <p>© 2025 Simran’s Taste House — Homemade goodness delivered with care.</p>
-  <p><i class="fab fa-whatsapp"></i> Order on WhatsApp: +91 90408 04333</p>
+  <p>© 2025 Simran’s Taste House — All Rights Reserved.</p>
+  <p>Designed & Owned by <strong>Simran Shah</strong> | Homemade with ❤️</p>
+  <p><i class="fab fa-whatsapp"></i> Order on WhatsApp: +91 90408 04333 | UPI: 9040804333@okhdfcbank</p>
 </footer>
 
 <div class="sticky-order" id="stickyCartBtn">
@@ -465,55 +554,112 @@
   </div>
   <div id="cartItemsList"></div>
   <div style="margin: 1rem 0; font-weight: bold; font-size:1.2rem;" id="cartTotal">Total: ₹0</div>
-  <button id="checkoutCartBtn" class="btn-wa" style="width:100%; justify-content:center;"><i class="fab fa-whatsapp"></i> Place Order via WhatsApp</button>
+  <div class="address-field">
+    <label><i class="fas fa-map-marker-alt"></i> Delivery Address (House/Street/Landmark)</label>
+    <textarea id="deliveryAddress" rows="2" placeholder="e.g., Lamptibahal, near Hanuman Mandir, Brajarajnagar"></textarea>
+  </div>
+  <div class="upi-section">
+    <div><i class="fas fa-rupee-sign"></i> <strong>Pay with UPI</strong></div>
+    <div class="upi-id">📱 UPI ID: 9040804333@okhdfcbank</div>
+    <button id="upiPayButton" class="btn-wa btn-upi-pay" style="background:#6A1B9A;"><i class="fas fa-qrcode"></i> Pay via UPI (Any App)</button>
+  </div>
+  <button id="checkoutCartBtn" class="btn-wa" style="width:100%; justify-content:center;"><i class="fab fa-whatsapp"></i> Confirm Order (WhatsApp)</button>
   <button id="clearCartBtn" style="margin-top: 0.8rem; background:#2A241E; border:none; padding:0.6rem; width:100%; border-radius:40px; color:#F5EEDC;">Clear Cart</button>
 </div>
 
 <script>
-  // ------------- COMPLETE MENU DATA WITH REAL IMAGE QUERIES -------------
+  // ---------- FULL MENU DATA WITH LOCAL IMAGES (PNG) ----------
   const menuData = {
     "🍽 ROTI & PARATHA": [
-      { name: "Plain Roti", price: 7, isVeg: true, variant: "per piece", imgQuery: "plain roti indian bread" },
-      { name: "Ghee Roti", price: 12, isVeg: true, variant: "per piece", imgQuery: "ghee roti" },
-      { name: "Aloo Paratha", price: 20, isVeg: true, variant: "per piece", imgQuery: "aloo paratha" },
-      { name: "Sattu Paratha", price: 20, isVeg: true, variant: "per piece", imgQuery: "sattu paratha" }
+      { name: "Plain Roti", price: 7, isVeg: true, variant: "per piece", img: "images/plain-roti.png" },
+      { name: "Ghee Roti", price: 12, isVeg: true, variant: "per piece", img: "images/ghee-roti.png" },
+      { name: "Aloo Paratha", price: 20, isVeg: true, variant: "per piece", img: "images/aloo-paratha.png" },
+      { name: "Sattu Paratha", price: 20, isVeg: true, variant: "per piece", img: "images/sattu-paratha.png" }
     ],
     "🍚 RICE": [
-      { name: "Plain Rice", price: 40, isVeg: true, variant: "Full", imgQuery: "steamed basmati rice bowl" }
+      { name: "Plain Rice", price: 40, isVeg: true, variant: "Full", img: "images/plain-rice.png" }
     ],
     "🍱 MEALS": [
-      { name: "Veg Meal", price: 80, isVeg: true, variant: "Full", desc: "Rice + Dal + Sabji + Bhaja + Papad + Salad", imgQuery: "indian veg thali" },
-      { name: "Chicken Meal", price: 120, isVeg: false, variant: "Full", desc: "Rice + Dal + Chicken Curry + Bhaja + Papad + Salad", imgQuery: "chicken curry thali" }
+      { name: "Veg Meal", price: 80, isVeg: true, variant: "Full", desc: "Rice+Dal+Sabji+Bhaja+Papad+Salad", img: "images/veg-meal.png" },
+      { name: "Chicken Meal", price: 120, isVeg: false, variant: "Full", desc: "Rice+Dal+Chicken Curry+Bhaja+Papad+Salad", img: "images/chicken-meal.png" }
     ],
     "🥗 VEG ITEMS": [
-      { name: "Mix Veg", priceHalf: 60, priceFull: 100, isVeg: true, imgQuery: "mixed vegetable curry indian" },
-      { name: "Aloo Bhujia", priceHalf: 40, priceFull: 40, isVeg: true, imgQuery: "aloo bhujia fry" },
-      { name: "Aloo Chokha", priceHalf: 40, priceFull: 40, isVeg: true, imgQuery: "aloo chokha" },
-      { name: "Baingan Bharta", priceHalf: 50, priceFull: 50, isVeg: true, imgQuery: "baingan bharta" },
-      { name: "Aloo Dum", priceHalf: 50, priceFull: 50, isVeg: true, imgQuery: "aloo dum spicy" },
-      { name: "Tamatar Chutney", priceHalf: 40, priceFull: 40, isVeg: true, imgQuery: "tomato chutney" },
-      { name: "Paneer Masala", priceHalf: 90, priceFull: 160, isVeg: true, imgQuery: "paneer masala gravy" },
-      { name: "Palak Paneer", priceHalf: 100, priceFull: 180, isVeg: true, imgQuery: "palak paneer" },
-      { name: "Mushroom Masala", priceHalf: 90, priceFull: 160, isVeg: true, imgQuery: "mushroom masala curry" },
-      { name: "Dal Fry", priceHalf: 60, priceFull: 120, isVeg: true, imgQuery: "dal fry tadka" },
-      { name: "Dal Tadka", priceHalf: 80, priceFull: 140, isVeg: true, imgQuery: "dal tadka indian" }
+      { name: "Mix Veg", priceHalf: 60, priceFull: 100, isVeg: true, img: "images/mix-veg.png" },
+      { name: "Aloo Bhujia", priceHalf: 40, priceFull: 40, isVeg: true, img: "images/aloo-bhujia.png" },
+      { name: "Aloo Chokha", priceHalf: 40, priceFull: 40, isVeg: true, img: "images/aloo-chokha.png" },
+      { name: "Baingan Bharta", priceHalf: 50, priceFull: 50, isVeg: true, img: "images/baingan-bharta.png" },
+      { name: "Aloo Dum", priceHalf: 50, priceFull: 50, isVeg: true, img: "images/aloo-dum.png" },
+      { name: "Tamatar Chutney", priceHalf: 40, priceFull: 40, isVeg: true, img: "images/tamatar-chutney.png" },
+      { name: "Paneer Masala", priceHalf: 90, priceFull: 160, isVeg: true, img: "images/paneer-masala.png" },
+      { name: "Palak Paneer", priceHalf: 100, priceFull: 180, isVeg: true, img: "images/palak-paneer.png" },
+      { name: "Mushroom Masala", priceHalf: 90, priceFull: 160, isVeg: true, img: "images/mushroom-masala.png" },
+      { name: "Dal Fry", priceHalf: 60, priceFull: 120, isVeg: true, img: "images/dal-fry.png" },
+      { name: "Dal Tadka", priceHalf: 80, priceFull: 140, isVeg: true, img: "images/dal-tadka.png" }
     ],
     "🍗 NON-VEG": [
-      { name: "Egg Fry", priceHalf: 50, priceFull: 80, isVeg: false, imgQuery: "egg fry indian style" },
-      { name: "Egg Bhurji", priceHalf: 50, priceFull: 90, isVeg: false, imgQuery: "egg bhurji" },
-      { name: "Egg Curry", priceHalf: 80, priceFull: 130, isVeg: false, imgQuery: "egg curry indian" },
-      { name: "Chicken Curry", priceHalf: 100, priceFull: 180, isVeg: false, imgQuery: "chicken curry indian home" }
+      { name: "Egg Fry", priceHalf: 50, priceFull: 80, isVeg: false, img: "images/egg-fry.png" },
+      { name: "Egg Bhurji", priceHalf: 50, priceFull: 90, isVeg: false, img: "images/egg-bhurji.png" },
+      { name: "Egg Curry", priceHalf: 80, priceFull: 130, isVeg: false, img: "images/egg-curry.png" },
+      { name: "Chicken Curry", priceHalf: 100, priceFull: 180, isVeg: false, img: "images/chicken-curry.png" }
     ]
   };
 
-  function getImageUrl(query) {
-    return `https://source.unsplash.com/featured/400x240/?${encodeURIComponent(query)}`;
+  // Helper: returns local image path or placeholder
+  function getImageUrl(item) {
+    if (item.img) return item.img;
+    // Fallback to placeholder if img missing
+    return `https://placehold.co/400x240/2A241E/F97316?text=${encodeURIComponent(item.name)}`;
   }
 
-  // Cart management
+  // ----- Reviews (localStorage) -----
+  let reviews = [];
+  function loadReviews() {
+    const stored = localStorage.getItem("simran_reviews");
+    if(stored) reviews = JSON.parse(stored);
+    else {
+      reviews = [
+        { name: "Rahul Sharma", rating: 5, text: "Amazing homemade taste! The Chicken Meal is just like my mom's. Highly recommend." },
+        { name: "Priya Mehta", rating: 5, text: "Fresh and hygienic. Veg Thali is value for money. Will order again!" },
+        { name: "Amit Kumar", rating: 4, text: "Aloo Paratha and Paneer Masala are delicious. Delivery was quick." }
+      ];
+      saveReviews();
+    }
+    renderReviews();
+  }
+  function saveReviews() { localStorage.setItem("simran_reviews", JSON.stringify(reviews)); }
+  function renderReviews() {
+    const container = document.getElementById('reviewsList');
+    if(!container) return;
+    if(reviews.length === 0) { container.innerHTML = '<p>No reviews yet. Be the first to share!</p>'; return; }
+    let html = '';
+    reviews.forEach(rev => {
+      let stars = '';
+      for(let i=1;i<=5;i++) stars += i<=rev.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+      html += `
+        <div class="review-item">
+          <div class="reviewer-name">${escapeHtml(rev.name)}</div>
+          <div class="rating">${stars}</div>
+          <div class="review-text">${escapeHtml(rev.text)}</div>
+        </div>
+      `;
+    });
+    container.innerHTML = html;
+  }
+  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function addReview(name, rating, text) {
+    if(!name.trim()) name = "Guest";
+    if(text.trim() === "") return;
+    reviews.unshift({ name: name.trim(), rating: parseInt(rating), text: text.trim() });
+    if(reviews.length > 10) reviews.pop();
+    saveReviews();
+    renderReviews();
+    alert("Thank you for your review!");
+  }
+
+  // ----- Cart logic -----
   let cart = [];
-  function loadCart() { const s = localStorage.getItem("simran_cart_glass"); if(s) cart = JSON.parse(s); else cart=[]; updateCartUI(); }
-  function saveCart() { localStorage.setItem("simran_cart_glass", JSON.stringify(cart)); updateCartUI(); }
+  function loadCart() { const s = localStorage.getItem("simran_cart_final"); if(s) cart = JSON.parse(s); else cart=[]; updateCartUI(); }
+  function saveCart() { localStorage.setItem("simran_cart_final", JSON.stringify(cart)); updateCartUI(); }
   function updateCartUI() {
     const count = cart.reduce((s,i)=> s+i.qty,0);
     document.getElementById('cartCount').innerText = count;
@@ -528,7 +674,7 @@
   }
   function showToast(msg) {
     let t = document.createElement('div');
-    t.innerText = msg; t.style.position='fixed'; t.style.bottom='100px'; t.style.left='20px'; t.style.background='#F97316'; t.style.color='#0D0C0A'; t.style.padding='0.6rem 1.2rem'; t.style.borderRadius='40px'; t.style.zIndex='1000'; t.style.fontWeight='bold'; t.style.backdropFilter='blur(8px)';
+    t.innerText = msg; t.style.position='fixed'; t.style.bottom='100px'; t.style.left='20px'; t.style.background='#F97316'; t.style.color='#0D0C0A'; t.style.padding='0.6rem 1.2rem'; t.style.borderRadius='40px'; t.style.zIndex='1000'; t.style.fontWeight='bold';
     document.body.appendChild(t); setTimeout(()=>t.remove(),1800);
   }
   function renderCartModal() {
@@ -561,17 +707,27 @@
   function clearCart(){ cart=[]; saveCart(); renderCartModal(); showToast("Cart cleared"); }
   function checkoutCartWhatsApp(){
     if(cart.length===0){ alert("Your cart is empty! Add items to order."); return; }
-    let msg = "🍽️ Simran’s Taste House Order:\n";
+    const address = document.getElementById('deliveryAddress')?.value.trim() || "Lamptibahal, Brajarajnagar (default)";
+    let msg = "🍽️ *Simran’s Taste House Order* 🍽️\n";
     let total=0;
     cart.forEach(i=>{ msg+=`• ${i.name} (${i.variant}) x${i.qty} = ₹${i.price*i.qty}\n`; total+=i.price*i.qty; });
-    msg+=`\n💰 Total: ₹${total}\n📍 Delivery: Lamptibahal, Brajarajnagar`;
+    msg+=`\n💰 *Total: ₹${total}*\n📍 *Delivery Address:* ${address}\n\n🙏 Please confirm & share payment screenshot.`;
     window.open(`https://wa.me/919040804333?text=${encodeURIComponent(msg)}`,'_blank');
+  }
+  function initiateUPIPayment() {
+    if(cart.length===0){ alert("Add items to cart first."); return; }
+    const total = cart.reduce((sum,i)=> sum + (i.price*i.qty), 0);
+    const address = document.getElementById('deliveryAddress')?.value.trim() || "Lamptibahal";
+    const note = `Simran's Taste House order - ${address}`;
+    const upiUrl = `upi://pay?pa=9040804333@okhdfcbank&pn=Simran%20Taste%20House&am=${total}&cu=INR&tn=${encodeURIComponent(note)}`;
+    window.location.href = upiUrl;
+    setTimeout(() => { alert("If UPI app didn't open, please pay manually using UPI ID: 9040804333@okhdfcbank"); }, 500);
   }
   function directWhatsApp(itemName, price, variant){
     window.open(`https://wa.me/919040804333?text=${encodeURIComponent(`Hi, I want to order: ${itemName} (${variant}) - ₹${price} from Simran’s Taste House`)}`,'_blank');
   }
 
-  // Render Menu
+  // Render Menu (using local images)
   function renderFullMenu() {
     const container = document.getElementById('menuContainer');
     if(!container) return;
@@ -587,7 +743,8 @@
       items.forEach((item) => {
         const card = document.createElement('div');
         card.className = 'food-card glass-card';
-        let imageUrl = getImageUrl(item.imgQuery || (item.name + " indian food"));
+        // Use item.img directly (local path)
+        let imageUrl = getImageUrl(item);
         let priceHtml = '', actionHtml = '', descHtml = item.desc ? `<small style="display:block; color:#FFD9A5; margin-top:4px;">${item.desc}</small>` : '';
         if(item.price !== undefined){
           priceHtml = `<div class="price-row"><span class="price-tag">₹${item.price}</span></div>`;
@@ -618,7 +775,6 @@
         `;
         grid.appendChild(card);
       });
-      // attach events
       const currGrid = grid;
       currGrid.querySelectorAll('.wa-order, .wa-half, .wa-full').forEach(btn => {
         btn.addEventListener('click', () => directWhatsApp(btn.dataset.name, parseInt(btn.dataset.price), btn.dataset.variant));
@@ -628,7 +784,6 @@
       });
       sectionIndex++;
     }
-    // Intersection Observer for glass fade-in
     const cards = document.querySelectorAll('.food-card');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if(entry.isIntersecting) entry.target.style.opacity = '1'; });
@@ -636,7 +791,6 @@
     cards.forEach(card => { card.style.opacity = '0'; card.style.transition = 'opacity 0.6s ease'; observer.observe(card); });
   }
 
-  // Build sticky category chips
   function buildCategoryBar() {
     const track = document.getElementById('categoryTrack');
     if(!track) return;
@@ -653,36 +807,34 @@
       });
       track.appendChild(chip);
     });
-    window.addEventListener('scroll', () => {
-      const sections = Array.from(document.querySelectorAll('.menu-section'));
-      let current = '';
-      for(let sec of sections){
-        const rect = sec.getBoundingClientRect();
-        if(rect.top <= 130 && rect.bottom >= 100) { current = sec.querySelector('.category-header')?.innerText || ''; break; }
-      }
-      document.querySelectorAll('.cat-chip').forEach((chip, i) => {
-        if(current.includes(chip.innerText.split('🍽')[0])) chip.classList.add('active');
-        else chip.classList.remove('active');
-      });
-    });
   }
 
   function initModal() {
     const cartIcon = document.getElementById('cartIcon'), sticky = document.getElementById('stickyCartBtn');
     const modal = document.getElementById('cartModal'), overlay = document.getElementById('cartOverlay');
     const close = document.getElementById('closeCart');
-    const open = () => { modal.classList.add('open'); overlay.classList.add('open'); };
+    const open = () => { modal.classList.add('open'); overlay.classList.add('open'); renderCartModal(); };
     const closeModal = () => { modal.classList.remove('open'); overlay.classList.remove('open'); };
     cartIcon?.addEventListener('click', open); sticky?.addEventListener('click', open);
     close?.addEventListener('click', closeModal); overlay?.addEventListener('click', closeModal);
     document.getElementById('checkoutCartBtn')?.addEventListener('click', () => { checkoutCartWhatsApp(); closeModal(); });
     document.getElementById('clearCartBtn')?.addEventListener('click', () => clearCart());
+    document.getElementById('upiPayButton')?.addEventListener('click', () => initiateUPIPayment());
   }
 
+  // Initialize everything
   loadCart();
+  loadReviews();
   renderFullMenu();
   buildCategoryBar();
   initModal();
+  document.getElementById('submitReviewBtn')?.addEventListener('click', () => {
+    const name = document.getElementById('reviewerName').value;
+    const rating = document.getElementById('reviewRating').value;
+    const text = document.getElementById('reviewText').value;
+    addReview(name, rating, text);
+    document.getElementById('reviewText').value = '';
+  });
 </script>
 </body>
 </html>
