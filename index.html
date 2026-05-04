@@ -13,7 +13,6 @@
   <meta property="og:type" content="website">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://simranstastehouse.com">
-  <!-- JSON-LD Structured Data for Local Business -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,7 +32,6 @@
     "openingHours": "Mo-Su 10:00-21:00"
   }
   </script>
-  <!-- Premium Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -486,46 +484,59 @@
 </div>
 
 <script>
-  // ---------- FULL MENU DATA WITH ABSOLUTE PATHS (ROOT-RELATIVE) ----------
+  // ----- CONFIGURATION -----
+  // This will automatically detect the correct base URL for images
+  const imageBasePath = (() => {
+    // If on GitHub Pages, the repo name might be part of the path
+    const pathParts = window.location.pathname.split('/');
+    // If there's a repository name in the URL (like /Simran-s-Taste-House/), use it
+    if (pathParts.length > 1 && pathParts[1] !== '') {
+      return '/' + pathParts[1] + '/image/';
+    }
+    return '/image/';
+  })();
+
+  console.log('✅ Image base path detected:', imageBasePath);
+
+  // Menu data with image filenames only (no path)
   const menuData = {
     "🍽 ROTI & PARATHA": [
-      { name: "Plain Roti", price: 7, isVeg: true, variant: "per piece", img: "/image/plain-roti.png" },
-      { name: "Ghee Roti", price: 12, isVeg: true, variant: "per piece", img: "/image/ghee-roti.png" },
-      { name: "Aloo Paratha", price: 20, isVeg: true, variant: "per piece", img: "/image/aloo-paratha.png" },
-      { name: "Sattu Paratha", price: 20, isVeg: true, variant: "per piece", img: "/image/sattu-paratha.png" }
+      { name: "Plain Roti", price: 7, isVeg: true, variant: "per piece", imgFile: "plain-roti.png" },
+      { name: "Ghee Roti", price: 12, isVeg: true, variant: "per piece", imgFile: "ghee-roti.png" },
+      { name: "Aloo Paratha", price: 20, isVeg: true, variant: "per piece", imgFile: "aloo-paratha.png" },
+      { name: "Sattu Paratha", price: 20, isVeg: true, variant: "per piece", imgFile: "sattu-paratha.png" }
     ],
     "🍚 RICE": [
-      { name: "Plain Rice", price: 40, isVeg: true, variant: "Full", img: "/image/plain-rice.png" }
+      { name: "Plain Rice", price: 40, isVeg: true, variant: "Full", imgFile: "plain-rice.png" }
     ],
     "🍱 MEALS": [
-      { name: "Veg Meal", price: 80, isVeg: true, variant: "Full", desc: "Rice+Dal+Sabji+Bhaja+Papad+Salad", img: "/image/veg-meal.png" },
-      { name: "Chicken Meal", price: 120, isVeg: false, variant: "Full", desc: "Rice+Dal+Chicken Curry+Bhaja+Papad+Salad", img: "/image/chicken-meal.png" }
+      { name: "Veg Meal", price: 80, isVeg: true, variant: "Full", desc: "Rice+Dal+Sabji+Bhaja+Papad+Salad", imgFile: "veg-meal.png" },
+      { name: "Chicken Meal", price: 120, isVeg: false, variant: "Full", desc: "Rice+Dal+Chicken Curry+Bhaja+Papad+Salad", imgFile: "chicken-meal.png" }
     ],
     "🥗 VEG ITEMS": [
-      { name: "Mix Veg", priceHalf: 60, priceFull: 100, isVeg: true, img: "/image/mix-veg.png" },
-      { name: "Aloo Bhujia", priceHalf: 40, priceFull: 40, isVeg: true, img: "/image/aloo-bhujia.png" },
-      { name: "Aloo Chokha", priceHalf: 40, priceFull: 40, isVeg: true, img: "/image/aloo-chokha.png" },
-      { name: "Baingan Bharta", priceHalf: 50, priceFull: 50, isVeg: true, img: "/image/baingan-bharta.png" },
-      { name: "Aloo Dum", priceHalf: 50, priceFull: 50, isVeg: true, img: "/image/aloo-dum.png" },
-      { name: "Tamatar Chutney", priceHalf: 40, priceFull: 40, isVeg: true, img: "/image/tamatar-chutney.png" },
-      { name: "Paneer Masala", priceHalf: 90, priceFull: 160, isVeg: true, img: "/image/paneer-masala.png" },
-      { name: "Palak Paneer", priceHalf: 100, priceFull: 180, isVeg: true, img: "/image/palak-paneer.png" },
-      { name: "Mushroom Masala", priceHalf: 90, priceFull: 160, isVeg: true, img: "/image/mushroom-masala.png" },
-      { name: "Dal Fry", priceHalf: 60, priceFull: 120, isVeg: true, img: "/image/dal-fry.png" },
-      { name: "Dal Tadka", priceHalf: 80, priceFull: 140, isVeg: true, img: "/image/dal-tadka.png" }
+      { name: "Mix Veg", priceHalf: 60, priceFull: 100, isVeg: true, imgFile: "mix-veg.png" },
+      { name: "Aloo Bhujia", priceHalf: 40, priceFull: 40, isVeg: true, imgFile: "aloo-bhujia.png" },
+      { name: "Aloo Chokha", priceHalf: 40, priceFull: 40, isVeg: true, imgFile: "aloo-chokha.png" },
+      { name: "Baingan Bharta", priceHalf: 50, priceFull: 50, isVeg: true, imgFile: "baingan-bharta.png" },
+      { name: "Aloo Dum", priceHalf: 50, priceFull: 50, isVeg: true, imgFile: "aloo-dum.png" },
+      { name: "Tamatar Chutney", priceHalf: 40, priceFull: 40, isVeg: true, imgFile: "tamatar-chutney.png" },
+      { name: "Paneer Masala", priceHalf: 90, priceFull: 160, isVeg: true, imgFile: "paneer-masala.png" },
+      { name: "Palak Paneer", priceHalf: 100, priceFull: 180, isVeg: true, imgFile: "palak-paneer.png" },
+      { name: "Mushroom Masala", priceHalf: 90, priceFull: 160, isVeg: true, imgFile: "mushroom-masala.png" },
+      { name: "Dal Fry", priceHalf: 60, priceFull: 120, isVeg: true, imgFile: "dal-fry.png" },
+      { name: "Dal Tadka", priceHalf: 80, priceFull: 140, isVeg: true, imgFile: "dal-tadka.png" }
     ],
     "🍗 NON-VEG": [
-      { name: "Egg Fry", priceHalf: 50, priceFull: 80, isVeg: false, img: "/image/egg-fry.png" },
-      { name: "Egg Bhurji", priceHalf: 50, priceFull: 90, isVeg: false, img: "/image/egg-bhurji.png" },
-      { name: "Egg Curry", priceHalf: 80, priceFull: 130, isVeg: false, img: "/image/egg-curry.png" },
-      { name: "Chicken Curry", priceHalf: 100, priceFull: 180, isVeg: false, img: "/image/chicken-curry.png" }
+      { name: "Egg Fry", priceHalf: 50, priceFull: 80, isVeg: false, imgFile: "egg-fry.png" },
+      { name: "Egg Bhurji", priceHalf: 50, priceFull: 90, isVeg: false, imgFile: "egg-bhurji.png" },
+      { name: "Egg Curry", priceHalf: 80, priceFull: 130, isVeg: false, imgFile: "egg-curry.png" },
+      { name: "Chicken Curry", priceHalf: 100, priceFull: 180, isVeg: false, imgFile: "chicken-curry.png" }
     ]
   };
 
-  // Helper: returns absolute image path
-  function getImageUrl(item) {
-    if (item.img) return item.img;
-    return `https://placehold.co/400x240/2A241E/F97316?text=${encodeURIComponent(item.name)}`;
+  // Build full image URL
+  function getImageUrl(imgFile) {
+    return imageBasePath + imgFile;
   }
 
   // ----- Reviews (localStorage) -----
@@ -644,7 +655,7 @@
     window.open(`https://wa.me/919040804333?text=${encodeURIComponent(`Hi, I want to order: ${itemName} (${variant}) - ₹${price} from Simran’s Taste House`)}`,'_blank');
   }
 
-  // Render Menu (using absolute image paths)
+  // Render Menu (using auto-detected base path)
   function renderFullMenu() {
     const container = document.getElementById('menuContainer');
     if(!container) return;
@@ -660,7 +671,7 @@
       items.forEach((item) => {
         const card = document.createElement('div');
         card.className = 'food-card glass-card';
-        let imageUrl = getImageUrl(item);
+        const imageUrl = getImageUrl(item.imgFile);
         let priceHtml = '', actionHtml = '', descHtml = item.desc ? `<small style="display:block; color:#FFD9A5; margin-top:4px;">${item.desc}</small>` : '';
         if(item.price !== undefined){
           priceHtml = `<div class="price-row"><span class="price-tag">₹${item.price}</span></div>`;
@@ -678,7 +689,7 @@
           </div>`;
         }
         card.innerHTML = `
-          <img class="card-img" src="${imageUrl}" alt="${item.name}" loading="lazy" onerror="this.src='https://placehold.co/400x240/2A241E/F97316?text=${encodeURIComponent(item.name)}'; console.error('Image not found: ${imageUrl}')">
+          <img class="card-img" src="${imageUrl}" alt="${item.name}" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/400x240/2A241E/F97316?text=Missing:${encodeURIComponent(item.imgFile)}'; console.error('❌ Image not found: ${imageUrl}')">
           <div class="card-content">
             <div class="card-header">
               <span class="item-name">${item.name}</span>
