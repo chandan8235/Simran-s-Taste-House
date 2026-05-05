@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-  <title>Simran’s Taste House - Fresh Homemade Food in Brajarajnagar | Order on WhatsApp</title>
+  <title>Simran’s Taste House - Fresh Homemade Food | Brajarajnagar</title>
   <meta name="description" content="Order authentic homemade meals in Lamptibahal, Brajarajnagar. Fresh, hygienic & affordable. Veg/Non-veg thalis, parathas, curries. Get delivery with UPI payment.">
   <meta name="keywords" content="homemade food Brajarajnagar, affordable meals Lamptibahal, Simran Taste House, veg meal, chicken curry, UPI payment, food delivery">
   <meta name="author" content="Simran Shah">
@@ -13,7 +13,8 @@
   <meta property="og:type" content="website">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://simranstastehouse.com">
-  <!-- JSON-LD Structured Data for Local Business -->
+  
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,6 +34,7 @@
     "openingHours": "Mo-Su 10:00-21:00"
   }
   </script>
+  
   <!-- Premium Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -48,10 +50,11 @@
       background: #0a0a0a;
       color: #FFF8F0;
       scroll-behavior: smooth;
+      overflow-x: hidden;
       position: relative;
     }
 
-    /* Background food layer */
+    /* Background layer with better mobile performance */
     .bg-food-layer {
       position: fixed;
       top: 0;
@@ -92,75 +95,50 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     }
 
+    /* ========== RESPONSIVE NAVBAR ========== */
     .navbar {
-      background: rgba(13, 12, 10, 0.65);
+      background: rgba(13, 12, 10, 0.75);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(249, 115, 22, 0.4);
-    }
-
-    .category-sticky {
-      background: rgba(13, 12, 10, 0.6);
-      backdrop-filter: blur(12px);
-      border-bottom: none;
-    }
-
-    .food-card {
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 200, 150, 0.3);
-    }
-
-    .food-card:hover {
-      background: rgba(30, 28, 26, 0.7);
-      border-color: #F97316;
-      transform: translateY(-8px);
-    }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    h1, h2, h3, .logo h1, .section-title, .hero h2, .category-header {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .navbar {
-      padding: 0.9rem 2rem;
+      padding: 0.75rem 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.75rem;
       position: sticky;
       top: 0;
       z-index: 200;
     }
 
     .logo h1 {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       background: linear-gradient(135deg, #F97316, #FFB347);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      letter-spacing: -0.3px;
     }
     .logo p {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       color: #FFD7A0;
+      white-space: nowrap;
     }
 
     .nav-links {
       display: flex;
-      gap: 1.8rem;
+      gap: 0.9rem;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
     .nav-links a {
       text-decoration: none;
       font-weight: 500;
       color: #FFF5E6;
       transition: 0.2s;
+      font-size: 0.9rem;
+      white-space: nowrap;
     }
     .nav-links a:hover, .nav-links a.active { color: #F97316; }
 
@@ -169,6 +147,8 @@
       cursor: pointer;
       font-size: 1.5rem;
       color: #F97316;
+      margin-left: 0.2rem;
+      padding: 5px;
     }
     .cart-count {
       position: absolute;
@@ -176,7 +156,7 @@
       right: -12px;
       background: #E63946;
       color: white;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: bold;
       border-radius: 30px;
       padding: 0.1rem 0.45rem;
@@ -184,48 +164,72 @@
       text-align: center;
     }
 
+    /* category sticky - dynamic top via media query */
     .category-sticky {
       position: sticky;
-      top: 72px;
       z-index: 150;
-      padding: 0.8rem 0;
+      padding: 0.7rem 0;
       overflow-x: auto;
       white-space: nowrap;
       scrollbar-width: thin;
+      top: 72px; /* default laptop */
+      background: rgba(13, 12, 10, 0.65);
+      backdrop-filter: blur(12px);
     }
     .category-track {
       display: inline-flex;
-      gap: 0.8rem;
-      padding: 0 1.5rem;
+      gap: 0.7rem;
+      padding: 0 1rem;
     }
     .cat-chip {
-      background: rgba(35, 32, 28, 0.7);
+      background: rgba(35, 32, 28, 0.8);
       backdrop-filter: blur(4px);
-      padding: 0.6rem 1.4rem;
+      padding: 0.6rem 1.2rem;
       border-radius: 40px;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      transition: all 0.2s;
+      min-height: 44px;
     }
-    .cat-chip i { color: #F97316; }
+    .cat-chip i { color: #F97316; font-size: 0.9rem; }
     .cat-chip.active, .cat-chip:hover { background: #F97316; color: #0D0C0A; }
 
-    .hero { text-align: center; padding: 3rem 1rem 3rem; }
+    /* Containers & Grid */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1.2rem;
+    }
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem 2.5rem;
+    }
     .hero-badge {
       background: rgba(249, 115, 22, 0.3);
       backdrop-filter: blur(5px);
       display: inline-block;
-      padding: 0.3rem 1.2rem;
+      padding: 0.3rem 1rem;
       border-radius: 40px;
+      font-size: 0.75rem;
     }
-    .hero h2 { font-size: 3rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+    .hero h2 {
+      font-size: 2rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      margin-top: 0.8rem;
+    }
+    .hero p {
+      font-size: 0.9rem;
+      max-width: 90%;
+      margin: 0.75rem auto;
+    }
     .btn-wa {
       background: #25D366;
       color: #0D0C0A;
-      padding: 0.9rem 2rem;
+      padding: 0.8rem 1.8rem;
       border-radius: 50px;
       font-weight: 700;
       display: inline-flex;
@@ -233,43 +237,57 @@
       gap: 10px;
       text-decoration: none;
       box-shadow: 0 6px 14px rgba(37,211,102,0.3);
+      font-size: 1rem;
     }
+
     .menu-section {
-      margin: 2.5rem 0 3rem;
+      margin: 2rem 0 2.5rem;
       scroll-margin-top: 100px;
     }
     .category-header {
-      font-size: 2rem;
-      margin-bottom: 1.8rem;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
       border-left: 6px solid #F97316;
       padding-left: 1rem;
     }
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.8rem;
+      gap: 1.5rem;
+    }
+
+    .food-card {
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 200, 150, 0.3);
+      border-radius: 1.8rem;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .food-card:hover {
+      background: rgba(30, 28, 26, 0.7);
+      border-color: #F97316;
+      transform: translateY(-5px);
     }
     .card-img {
       width: 100%;
       height: 180px;
       object-fit: cover;
-      border-top-left-radius: 1.8rem;
-      border-top-right-radius: 1.8rem;
     }
-    .card-content { padding: 1.2rem; }
+    .card-content { padding: 1rem 1.2rem 1.2rem; }
     .veg-badge, .nonveg-badge {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       padding: 0.2rem 0.8rem;
       border-radius: 30px;
+      font-weight: 600;
     }
     .veg-badge { background: #2B5E2E; color: #C8E6C9; }
     .nonveg-badge { background: #9C2E2E; color: #FFCDD2; }
     .item-name { font-size: 1.2rem; font-weight: 700; }
-    .price-row { margin: 12px 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .price-row { margin: 12px 0; display: flex; flex-wrap: wrap; gap: 10px; }
     .price-tag {
       background: rgba(0,0,0,0.5);
       backdrop-filter: blur(4px);
-      padding: 0.25rem 0.9rem;
+      padding: 0.3rem 1rem;
       border-radius: 30px;
       font-weight: 600;
       font-size: 0.8rem;
@@ -278,24 +296,28 @@
     .action-buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
       margin-top: 12px;
     }
     .btn-sm {
-      background: #F97316;
       border: none;
-      padding: 0.45rem 0.9rem;
+      padding: 0.5rem 1rem;
       border-radius: 40px;
       font-size: 0.75rem;
       font-weight: 600;
       cursor: pointer;
+      transition: 0.2s;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
     .btn-sm-wa { background: #25D366; color: #0D0C0A; }
-    .add-cart-btn { background: rgba(45, 36, 30, 0.8); color: #FFE6C7; border: 1px solid #F97316; }
+    .add-cart-btn { background: rgba(45, 36, 30, 0.9); color: #FFE6C7; border: 1px solid #F97316; }
     
-    /* Enhanced About section */
-    .about-card {
-      padding: 2rem;
+    /* About & Reviews */
+    .about-card, .reviews-card, .contact-card {
+      padding: 1.8rem;
       margin: 2rem 0;
     }
     .owner-badge {
@@ -307,11 +329,6 @@
       border-radius: 40px;
       margin-top: 1rem;
     }
-    /* Reviews section */
-    .reviews-card {
-      padding: 2rem;
-      margin: 2rem 0;
-    }
     .review-item {
       background: rgba(0,0,0,0.3);
       border-radius: 1.2rem;
@@ -319,45 +336,25 @@
       margin-bottom: 1rem;
       border-left: 4px solid #F97316;
     }
-    .reviewer-name {
-      font-weight: 700;
-      color: #FFD7A0;
-    }
-    .rating {
-      color: #FFB347;
-      margin: 6px 0;
-    }
-    .rating i {
-      margin-right: 2px;
-    }
-    .review-text {
-      font-size: 0.9rem;
-      color: #EEDDCC;
-    }
-    .add-review {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255,200,150,0.3);
-    }
     .add-review input, .add-review textarea, .add-review select {
       width: 100%;
-      margin-bottom: 10px;
-      padding: 8px;
-      border-radius: 1rem;
-      background: rgba(0,0,0,0.5);
+      margin-bottom: 12px;
+      padding: 12px;
+      border-radius: 1.2rem;
+      background: rgba(0,0,0,0.6);
       border: 1px solid #F97316;
       color: white;
+      font-family: inherit;
     }
     .btn-submit-review {
       background: #F97316;
       border: none;
-      padding: 0.5rem 1rem;
+      padding: 0.7rem 1.2rem;
       border-radius: 40px;
       color: #0D0C0A;
       font-weight: 600;
       cursor: pointer;
     }
-    .contact-card { padding: 2rem; margin: 2rem 0; }
     .map-placeholder {
       background: rgba(0,0,0,0.4);
       backdrop-filter: blur(6px);
@@ -369,13 +366,14 @@
       background: rgba(8,7,6,0.8);
       backdrop-filter: blur(8px);
       text-align: center;
-      padding: 2rem;
-      font-size: 0.8rem;
+      padding: 1.8rem;
+      font-size: 0.75rem;
       border-top: 1px solid rgba(249,115,22,0.3);
     }
-    /* Cart modal */
+    
+    /* Cart Modal */
     .cart-modal {
-      background: rgba(20, 18, 16, 0.85);
+      background: rgba(20, 18, 16, 0.95);
       backdrop-filter: blur(20px);
       position: fixed;
       bottom: 0;
@@ -396,7 +394,7 @@
       left:0;
       width:100%;
       height:100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.7);
       backdrop-filter: blur(3px);
       z-index: 999;
       visibility: hidden;
@@ -404,16 +402,13 @@
       transition:0.2s;
     }
     .cart-overlay.open { visibility: visible; opacity:1; }
-    .address-field { margin: 1rem 0; }
-    .address-field label { display: block; font-size: 0.8rem; margin-bottom: 6px; color: #FFD9A5; }
-    .address-field input, .address-field textarea {
+    .address-field textarea, .address-field input {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border-radius: 1rem;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       border: 1px solid #F97316;
       color: white;
-      font-family: inherit;
     }
     .upi-section {
       background: rgba(0,0,0,0.4);
@@ -425,11 +420,11 @@
     .btn-upi-pay { background: #6A1B9A; margin-top: 8px; width: 100%; }
     .sticky-order {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
+      bottom: 20px;
+      right: 16px;
       background: #F97316;
-      width: 58px;
-      height: 58px;
+      width: 56px;
+      height: 56px;
       border-radius: 50px;
       display: flex;
       align-items: center;
@@ -439,11 +434,146 @@
       z-index: 90;
       font-size: 1.7rem;
       color: #0D0C0A;
+      transition: transform 0.1s;
     }
+    .sticky-order:active { transform: scale(0.95); }
+    
+    /* ========== RESPONSIVE BREAKPOINTS ========== */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.6rem 1rem;
+        gap: 0.5rem;
+      }
+      .logo h1 {
+        font-size: 1.2rem;
+      }
+      .logo p {
+        font-size: 0.55rem;
+        white-space: normal;
+      }
+      .nav-links a {
+        font-size: 0.78rem;
+        gap: 0.6rem;
+      }
+      .nav-links {
+        gap: 0.7rem;
+      }
+      .cart-icon {
+        font-size: 1.4rem;
+      }
+      .category-sticky {
+        top: 92px; /* adjusted for tablet/mobile navbar wrap */
+      }
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      .container {
+        padding: 0 1rem;
+      }
+      .category-header {
+        font-size: 1.4rem;
+      }
+      .card-grid {
+        gap: 1.2rem;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      }
+      .btn-sm {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.7rem;
+      }
+    }
+    
     @media (max-width: 640px) {
-      .navbar { flex-direction: column; }
-      .hero h2 { font-size: 2rem; }
-      .category-sticky { top: 110px; }
+      .navbar {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .logo {
+        flex: 1;
+      }
+      .nav-links {
+        width: auto;
+        justify-content: flex-end;
+        gap: 0.65rem;
+      }
+      .category-sticky {
+        top: 106px; /* mobile double row navbar */
+      }
+      .hero h2 {
+        font-size: 1.6rem;
+      }
+      .hero-badge {
+        font-size: 0.7rem;
+      }
+      .btn-wa {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.9rem;
+      }
+      .cat-chip {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+      }
+      .food-card .card-content {
+        padding: 0.9rem;
+      }
+      .action-buttons {
+        gap: 6px;
+      }
+      .sticky-order {
+        width: 50px;
+        height: 50px;
+        bottom: 16px;
+        right: 14px;
+        font-size: 1.5rem;
+      }
+      .cart-modal {
+        padding: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .category-sticky {
+        top: 112px;
+      }
+      .hero h2 {
+        font-size: 1.4rem;
+      }
+      .hero p {
+        font-size: 0.8rem;
+      }
+      .price-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.8rem;
+      }
+      .item-name {
+        font-size: 1rem;
+      }
+      .card-img {
+        height: 160px;
+      }
+      .btn-sm {
+        min-height: 38px;
+      }
+    }
+    
+    /* Tablet landscape fix */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .category-sticky {
+        top: 78px;
+      }
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* Extra Utility */
+    button, .btn-sm, .cart-icon, .cat-chip, .sticky-order {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    ::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
     }
   </style>
 </head>
@@ -488,35 +618,28 @@
     <div id="menuContainer"></div>
   </div>
 
-  <!-- Enhanced About Section with Owner Details -->
   <div class="container" id="about">
     <div class="about-card glass-card">
       <h3 style="color:#F97316;"><i class="fas fa-heart"></i> About Simran’s Kitchen</h3>
-      <p style="margin-top:0.8rem;">📍 <strong>Lamptibahal, Brajarajnagar</strong> — Every meal is prepared like home, with pure love and hygiene. We serve fresh, nutritious, and affordable food to students, families, and working professionals. No preservatives, just authentic desi taste.</p>
+      <p style="margin-top:0.8rem;">📍 <strong>Lamptibahal, Brajarajnagar</strong> — Every meal is prepared like home, with pure love and hygiene. We serve fresh, nutritious, and affordable food to students, families, and professionals. No preservatives, just authentic desi taste.</p>
       <p>⭐ 100% Hygienic | Homemade Spices | Pocket-friendly ⭐</p>
       <div class="owner-badge">
         <i class="fas fa-crown"></i> Owner & Founder: <strong>Simran Shah</strong>
       </div>
-      <p style="margin-top: 0.8rem;"><i class="fas fa-quote-left"></i> Cooking is my passion, and serving you healthy, homemade food is my mission. Every dish is made with the same care as I would for my own family. — Simran Shah</p>
+      <p style="margin-top: 0.8rem;"><i class="fas fa-quote-left"></i> Cooking is my passion, and serving you healthy, homemade food is my mission. — Simran Shah</p>
     </div>
   </div>
 
-  <!-- Customer Reviews & Ratings Section -->
   <div class="container" id="reviews">
     <div class="reviews-card glass-card">
       <h3 style="color:#F97316;"><i class="fas fa-star"></i> Customer Reviews & Ratings</h3>
-      <div id="reviewsList">
-        <!-- Dynamic reviews will appear here -->
-      </div>
+      <div id="reviewsList"></div>
       <div class="add-review">
         <h4><i class="fas fa-pen-alt"></i> Share Your Experience</h4>
         <input type="text" id="reviewerName" placeholder="Your Name" value="Guest">
         <select id="reviewRating">
-          <option value="5">⭐ 5 - Excellent</option>
-          <option value="4">⭐ 4 - Very Good</option>
-          <option value="3">⭐ 3 - Good</option>
-          <option value="2">⭐ 2 - Average</option>
-          <option value="1">⭐ 1 - Poor</option>
+          <option value="5">⭐ 5 - Excellent</option><option value="4">⭐ 4 - Very Good</option>
+          <option value="3">⭐ 3 - Good</option><option value="2">⭐ 2 - Average</option><option value="1">⭐ 1 - Poor</option>
         </select>
         <textarea id="reviewText" rows="2" placeholder="Write your review..."></textarea>
         <button class="btn-submit-review" id="submitReviewBtn"><i class="fas fa-paper-plane"></i> Submit Review</button>
@@ -545,7 +668,6 @@
 <div class="sticky-order" id="stickyCartBtn">
   <i class="fas fa-shopping-cart"></i>
 </div>
-
 <div class="cart-overlay" id="cartOverlay"></div>
 <div class="cart-modal" id="cartModal">
   <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -553,7 +675,7 @@
     <i class="fas fa-times" id="closeCart" style="font-size:1.4rem; cursor:pointer;"></i>
   </div>
   <div id="cartItemsList"></div>
-  <div style="margin: 1rem 0; font-weight: bold; font-size:1.2rem;" id="cartTotal">Total: ₹0</div>
+  <div id="cartTotal" style="margin: 1rem 0; font-weight: bold; font-size:1.2rem;">Total: ₹0</div>
   <div class="address-field">
     <label><i class="fas fa-map-marker-alt"></i> Delivery Address (House/Street/Landmark)</label>
     <textarea id="deliveryAddress" rows="2" placeholder="e.g., Lamptibahal, near Hanuman Mandir, Brajarajnagar"></textarea>
@@ -564,11 +686,11 @@
     <button id="upiPayButton" class="btn-wa btn-upi-pay" style="background:#6A1B9A;"><i class="fas fa-qrcode"></i> Pay via UPI (Any App)</button>
   </div>
   <button id="checkoutCartBtn" class="btn-wa" style="width:100%; justify-content:center;"><i class="fab fa-whatsapp"></i> Confirm Order (WhatsApp)</button>
-  <button id="clearCartBtn" style="margin-top: 0.8rem; background:#2A241E; border:none; padding:0.6rem; width:100%; border-radius:40px; color:#F5EEDC;">Clear Cart</button>
+  <button id="clearCartBtn" style="margin-top: 0.8rem; background:#2A241E; border:none; padding:0.7rem; width:100%; border-radius:40px; color:#F5EEDC;">Clear Cart</button>
 </div>
 
 <script>
-  // ---------- FULL MENU DATA WITH LOCAL IMAGES (PNG) ----------
+  // ---------- MENU DATA with local images (placeholder fallback handled) ----------
   const menuData = {
     "🍽 ROTI & PARATHA": [
       { name: "Plain Roti", price: 7, isVeg: true, variant: "per piece", img: "images/plain-roti.png" },
@@ -586,254 +708,151 @@
     "🥗 VEG ITEMS": [
       { name: "Mix Veg", priceHalf: 60, priceFull: 100, isVeg: true, img: "images/mix-veg.png" },
       { name: "Aloo Bhujia", priceHalf: 40, priceFull: 40, isVeg: true, img: "images/aloo-bhujia.png" },
-      { name: "Aloo Chokha", priceHalf: 40, priceFull: 40, isVeg: true, img: "images/aloo-chokha.png" },
       { name: "Baingan Bharta", priceHalf: 50, priceFull: 50, isVeg: true, img: "images/baingan-bharta.png" },
-      { name: "Aloo Dum", priceHalf: 50, priceFull: 50, isVeg: true, img: "images/aloo-dum.png" },
-      { name: "Tamatar Chutney", priceHalf: 40, priceFull: 40, isVeg: true, img: "images/tamatar-chutney.png" },
       { name: "Paneer Masala", priceHalf: 90, priceFull: 160, isVeg: true, img: "images/paneer-masala.png" },
-      { name: "Palak Paneer", priceHalf: 100, priceFull: 180, isVeg: true, img: "images/palak-paneer.png" },
       { name: "Mushroom Masala", priceHalf: 90, priceFull: 160, isVeg: true, img: "images/mushroom-masala.png" },
-      { name: "Dal Fry", priceHalf: 60, priceFull: 120, isVeg: true, img: "images/dal-fry.png" },
-      { name: "Dal Tadka", priceHalf: 80, priceFull: 140, isVeg: true, img: "images/dal-tadka.png" }
+      { name: "Dal Fry", priceHalf: 60, priceFull: 120, isVeg: true, img: "images/dal-fry.png" }
     ],
     "🍗 NON-VEG": [
       { name: "Egg Fry", priceHalf: 50, priceFull: 80, isVeg: false, img: "images/egg-fry.png" },
-      { name: "Egg Bhurji", priceHalf: 50, priceFull: 90, isVeg: false, img: "images/egg-bhurji.png" },
       { name: "Egg Curry", priceHalf: 80, priceFull: 130, isVeg: false, img: "images/egg-curry.png" },
       { name: "Chicken Curry", priceHalf: 100, priceFull: 180, isVeg: false, img: "images/chicken-curry.png" }
     ]
   };
 
-  // Helper: returns local image path or placeholder
   function getImageUrl(item) {
-    if (item.img) return item.img;
-    // Fallback to placeholder if img missing
-    return `https://placehold.co/400x240/2A241E/F97316?text=${encodeURIComponent(item.name)}`;
+    return item.img ? item.img : `https://placehold.co/400x240/2A241E/F97316?text=${encodeURIComponent(item.name)}`;
   }
 
-  // ----- Reviews (localStorage) -----
+  // Reviews
   let reviews = [];
   function loadReviews() {
     const stored = localStorage.getItem("simran_reviews");
     if(stored) reviews = JSON.parse(stored);
-    else {
-      reviews = [
-        { name: "Rahul Sharma", rating: 5, text: "Amazing homemade taste! The Chicken Meal is just like my mom's. Highly recommend." },
-        { name: "Priya Mehta", rating: 5, text: "Fresh and hygienic. Veg Thali is value for money. Will order again!" },
-        { name: "Amit Kumar", rating: 4, text: "Aloo Paratha and Paneer Masala are delicious. Delivery was quick." }
-      ];
-      saveReviews();
-    }
-    renderReviews();
+    else reviews = [
+      { name: "Rahul Sharma", rating: 5, text: "Amazing homemade taste! Chicken Meal is just like my mom's." },
+      { name: "Priya Mehta", rating: 5, text: "Fresh and hygienic. Veg Thali is value for money." }
+    ];
+    saveReviews(); renderReviews();
   }
   function saveReviews() { localStorage.setItem("simran_reviews", JSON.stringify(reviews)); }
   function renderReviews() {
     const container = document.getElementById('reviewsList');
     if(!container) return;
-    if(reviews.length === 0) { container.innerHTML = '<p>No reviews yet. Be the first to share!</p>'; return; }
+    if(!reviews.length) { container.innerHTML = '<p>No reviews yet. Be the first!</p>'; return; }
     let html = '';
     reviews.forEach(rev => {
-      let stars = '';
-      for(let i=1;i<=5;i++) stars += i<=rev.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
-      html += `
-        <div class="review-item">
-          <div class="reviewer-name">${escapeHtml(rev.name)}</div>
-          <div class="rating">${stars}</div>
-          <div class="review-text">${escapeHtml(rev.text)}</div>
-        </div>
-      `;
+      let stars = ''; for(let i=1;i<=5;i++) stars += i<=rev.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+      html += `<div class="review-item"><div class="reviewer-name">${escapeHtml(rev.name)}</div><div class="rating">${stars}</div><div class="review-text">${escapeHtml(rev.text)}</div></div>`;
     });
     container.innerHTML = html;
   }
-  function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+  function escapeHtml(str) { return str.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); }
   function addReview(name, rating, text) {
-    if(!name.trim()) name = "Guest";
-    if(text.trim() === "") return;
-    reviews.unshift({ name: name.trim(), rating: parseInt(rating), text: text.trim() });
-    if(reviews.length > 10) reviews.pop();
-    saveReviews();
-    renderReviews();
+    if(!text.trim()) return;
+    reviews.unshift({ name: name.trim()||"Guest", rating: parseInt(rating), text: text.trim() });
+    if(reviews.length>10) reviews.pop();
+    saveReviews(); renderReviews();
     alert("Thank you for your review!");
   }
 
-  // ----- Cart logic -----
+  // Cart
   let cart = [];
   function loadCart() { const s = localStorage.getItem("simran_cart_final"); if(s) cart = JSON.parse(s); else cart=[]; updateCartUI(); }
   function saveCart() { localStorage.setItem("simran_cart_final", JSON.stringify(cart)); updateCartUI(); }
-  function updateCartUI() {
-    const count = cart.reduce((s,i)=> s+i.qty,0);
-    document.getElementById('cartCount').innerText = count;
-    renderCartModal();
-  }
+  function updateCartUI() { document.getElementById('cartCount').innerText = cart.reduce((s,i)=> s+i.qty,0); renderCartModal(); }
   function addToCart(name, price, variant) {
-    const existing = cart.find(i => i.name === name && i.variant === variant);
+    let existing = cart.find(i => i.name === name && i.variant === variant);
     if(existing) existing.qty += 1;
     else cart.push({ name, price, variant, qty: 1 });
     saveCart();
-    showToast(`✓ ${name} (${variant}) added`);
-  }
-  function showToast(msg) {
-    let t = document.createElement('div');
-    t.innerText = msg; t.style.position='fixed'; t.style.bottom='100px'; t.style.left='20px'; t.style.background='#F97316'; t.style.color='#0D0C0A'; t.style.padding='0.6rem 1.2rem'; t.style.borderRadius='40px'; t.style.zIndex='1000'; t.style.fontWeight='bold';
-    document.body.appendChild(t); setTimeout(()=>t.remove(),1800);
+    let t=document.createElement('div'); t.innerText=`✓ ${name} added`; t.style.cssText="position:fixed; bottom:90px; left:20px; background:#F97316; color:#0D0C0A; padding:8px 16px; border-radius:40px; z-index:1001; font-weight:bold"; document.body.appendChild(t); setTimeout(()=>t.remove(),1500);
   }
   function renderCartModal() {
     const container = document.getElementById('cartItemsList');
     if(!container) return;
-    if(cart.length===0) { container.innerHTML='<p style="color:#EEDDCC;">Your cart is empty. Add delicious items!</p>'; document.getElementById('cartTotal').innerHTML='Total: ₹0'; return; }
-    let html=''; let total=0;
+    if(cart.length===0) { container.innerHTML='<p style="color:#EEDDCC;">Your cart is empty.</p>'; document.getElementById('cartTotal').innerHTML='Total: ₹0'; return; }
+    let html='', total=0;
     cart.forEach((item,idx)=>{
       const itotal = item.price*item.qty; total+=itotal;
-      html+=`<div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,200,150,0.3); padding:0.8rem 0;">
-        <div><strong>${item.name}</strong> (${item.variant}) x${item.qty}<br><span style="font-size:0.75rem;">₹${item.price} each</span></div>
-        <div><button class="cart-qty" data-idx="${idx}" data-delta="-1" style="background:#3A2E26; border:none; width:28px; border-radius:20px; color:white;">-</button>
-        <span style="margin:0 6px;">${item.qty}</span>
-        <button class="cart-qty" data-idx="${idx}" data-delta="1" style="background:#3A2E26; border:none; width:28px; border-radius:20px; color:white;">+</button>
-        <button class="cart-remove" data-idx="${idx}" style="margin-left:8px; background:none; border:none; color:#E63946;"><i class="fas fa-trash-alt"></i></button></div>
-      </div>`;
+      html+=`<div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,200,150,0.3); padding:0.8rem 0;"><div><strong>${item.name}</strong> (${item.variant}) x${item.qty}<br><span style="font-size:0.7rem;">₹${item.price} each</span></div><div><button class="cart-qty" data-idx="${idx}" data-delta="-1" style="background:#3A2E26; border:none; width:32px; border-radius:20px;">-</button><span style="margin:0 8px;">${item.qty}</span><button class="cart-qty" data-idx="${idx}" data-delta="1" style="background:#3A2E26; border:none; width:32px;">+</button><button class="cart-remove" data-idx="${idx}" style="margin-left:8px; background:none; border:none; color:#E63946;"><i class="fas fa-trash-alt"></i></button></div></div>`;
     });
     container.innerHTML=html;
     document.getElementById('cartTotal').innerHTML=`Total: ₹${total}`;
-    document.querySelectorAll('.cart-qty').forEach(btn=>{
-      btn.addEventListener('click',(e)=>{
-        const idx=parseInt(btn.dataset.idx); const delta=parseInt(btn.dataset.delta);
-        if(cart[idx]){ cart[idx].qty+=delta; if(cart[idx].qty<=0) cart.splice(idx,1); saveCart(); renderCartModal(); }
-      });
-    });
-    document.querySelectorAll('.cart-remove').forEach(btn=>{
-      btn.addEventListener('click',()=>{ const idx=parseInt(btn.dataset.idx); cart.splice(idx,1); saveCart(); renderCartModal(); });
-    });
+    document.querySelectorAll('.cart-qty').forEach(btn=>btn.addEventListener('click',(e)=>{ let idx=parseInt(btn.dataset.idx), delta=parseInt(btn.dataset.delta); if(cart[idx]){ cart[idx].qty+=delta; if(cart[idx].qty<=0) cart.splice(idx,1); saveCart(); renderCartModal(); } }));
+    document.querySelectorAll('.cart-remove').forEach(btn=>btn.addEventListener('click',()=>{ const idx=parseInt(btn.dataset.idx); cart.splice(idx,1); saveCart(); renderCartModal(); }));
   }
-  function clearCart(){ cart=[]; saveCart(); renderCartModal(); showToast("Cart cleared"); }
-  function checkoutCartWhatsApp(){
-    if(cart.length===0){ alert("Your cart is empty! Add items to order."); return; }
-    const address = document.getElementById('deliveryAddress')?.value.trim() || "Lamptibahal, Brajarajnagar (default)";
-    let msg = "🍽️ *Simran’s Taste House Order* 🍽️\n";
-    let total=0;
+  function clearCart(){ cart=[]; saveCart(); renderCartModal(); }
+  function checkoutWhatsApp() {
+    if(!cart.length){ alert("Cart empty!"); return; }
+    const addr = document.getElementById('deliveryAddress')?.value.trim() || "Lamptibahal, Brajarajnagar";
+    let msg = "🍽️ *Simran’s Taste House Order* 🍽️\n"; let total=0;
     cart.forEach(i=>{ msg+=`• ${i.name} (${i.variant}) x${i.qty} = ₹${i.price*i.qty}\n`; total+=i.price*i.qty; });
-    msg+=`\n💰 *Total: ₹${total}*\n📍 *Delivery Address:* ${address}\n\n🙏 Please confirm & share payment screenshot.`;
+    msg+=`\n💰 Total: ₹${total}\n📍 Address: ${addr}\n\nPlease confirm & share payment screenshot.`;
     window.open(`https://wa.me/919040804333?text=${encodeURIComponent(msg)}`,'_blank');
   }
-  function initiateUPIPayment() {
-    if(cart.length===0){ alert("Add items to cart first."); return; }
-    const total = cart.reduce((sum,i)=> sum + (i.price*i.qty), 0);
-    const address = document.getElementById('deliveryAddress')?.value.trim() || "Lamptibahal";
-    const note = `Simran's Taste House order - ${address}`;
-    const upiUrl = `upi://pay?pa=9040804333@okhdfcbank&pn=Simran%20Taste%20House&am=${total}&cu=INR&tn=${encodeURIComponent(note)}`;
-    window.location.href = upiUrl;
-    setTimeout(() => { alert("If UPI app didn't open, please pay manually using UPI ID: 9040804333@okhdfcbank"); }, 500);
-  }
-  function directWhatsApp(itemName, price, variant){
-    window.open(`https://wa.me/919040804333?text=${encodeURIComponent(`Hi, I want to order: ${itemName} (${variant}) - ₹${price} from Simran’s Taste House`)}`,'_blank');
-  }
+  function upiPay(){ if(!cart.length){ alert("Cart empty"); return; } const total=cart.reduce((s,i)=>s+i.price*i.qty,0); window.location.href=`upi://pay?pa=9040804333@okhdfcbank&pn=Simran%20Taste%20House&am=${total}&cu=INR&tn=Simran's%20order`; setTimeout(()=>alert("If UPI didn't open, pay manually to 9040804333@okhdfcbank"),500); }
+  function directWhatsApp(item,price,variant){ window.open(`https://wa.me/919040804333?text=${encodeURIComponent(`Hi, I want to order: ${item} (${variant}) - ₹${price} from Simran’s Taste House`)}`,'_blank'); }
 
-  // Render Menu (using local images)
+  // Full menu render
   function renderFullMenu() {
     const container = document.getElementById('menuContainer');
     if(!container) return;
     container.innerHTML = '';
-    let sectionIndex = 0;
+    let idxCat=0;
     for(const [catName, items] of Object.entries(menuData)){
-      const sectionDiv = document.createElement('div');
-      sectionDiv.className = 'menu-section';
-      sectionDiv.id = `cat-${sectionIndex}`;
-      sectionDiv.innerHTML = `<div class="category-header"><i class="fas fa-utensils"></i> ${catName}</div><div class="card-grid" id="grid-${sectionIndex}"></div>`;
+      const sectionDiv = document.createElement('div'); sectionDiv.className='menu-section'; sectionDiv.id=`cat-${idxCat}`;
+      sectionDiv.innerHTML = `<div class="category-header"><i class="fas fa-utensils"></i> ${catName}</div><div class="card-grid" id="grid-${idxCat}"></div>`;
       container.appendChild(sectionDiv);
       const grid = sectionDiv.querySelector('.card-grid');
-      items.forEach((item) => {
-        const card = document.createElement('div');
-        card.className = 'food-card glass-card';
-        // Use item.img directly (local path)
-        let imageUrl = getImageUrl(item);
-        let priceHtml = '', actionHtml = '', descHtml = item.desc ? `<small style="display:block; color:#FFD9A5; margin-top:4px;">${item.desc}</small>` : '';
+      items.forEach(item => {
+        const card = document.createElement('div'); card.className='food-card glass-card';
+        let priceHtml='', actionHtml='', descHtml = item.desc ? `<small style="display:block; color:#FFD9A5;">${item.desc}</small>` : '';
         if(item.price !== undefined){
           priceHtml = `<div class="price-row"><span class="price-tag">₹${item.price}</span></div>`;
-          actionHtml = `<div class="action-buttons">
-            <button class="btn-sm btn-sm-wa wa-order" data-name="${item.name}" data-price="${item.price}" data-variant="${item.variant}"><i class="fab fa-whatsapp"></i> Order</button>
-            <button class="btn-sm add-cart-btn cart-add" data-name="${item.name}" data-price="${item.price}" data-variant="${item.variant}"><i class="fas fa-cart-plus"></i> Cart</button>
-          </div>`;
+          actionHtml = `<div class="action-buttons"><button class="btn-sm btn-sm-wa wa-order" data-name="${item.name}" data-price="${item.price}" data-variant="${item.variant}"><i class="fab fa-whatsapp"></i> Order</button><button class="btn-sm add-cart-btn cart-add" data-name="${item.name}" data-price="${item.price}" data-variant="${item.variant}"><i class="fas fa-cart-plus"></i> Cart</button></div>`;
         } else {
           priceHtml = `<div class="price-row"><span class="price-tag">Half: ₹${item.priceHalf}</span><span class="price-tag">Full: ₹${item.priceFull}</span></div>`;
-          actionHtml = `<div class="action-buttons">
-            <button class="btn-sm btn-sm-wa wa-half" data-name="${item.name}" data-price="${item.priceHalf}" data-variant="Half"><i class="fab fa-whatsapp"></i> Half</button>
-            <button class="btn-sm btn-sm-wa wa-full" data-name="${item.name}" data-price="${item.priceFull}" data-variant="Full"><i class="fab fa-whatsapp"></i> Full</button>
-            <button class="btn-sm add-cart-btn cart-half" data-name="${item.name}" data-price="${item.priceHalf}" data-variant="Half">+ Half</button>
-            <button class="btn-sm add-cart-btn cart-full" data-name="${item.name}" data-price="${item.priceFull}" data-variant="Full">+ Full</button>
-          </div>`;
+          actionHtml = `<div class="action-buttons"><button class="btn-sm btn-sm-wa wa-half" data-name="${item.name}" data-price="${item.priceHalf}" data-variant="Half"><i class="fab fa-whatsapp"></i> Half</button><button class="btn-sm btn-sm-wa wa-full" data-name="${item.name}" data-price="${item.priceFull}" data-variant="Full"><i class="fab fa-whatsapp"></i> Full</button><button class="btn-sm add-cart-btn cart-half" data-name="${item.name}" data-price="${item.priceHalf}" data-variant="Half">+ Half</button><button class="btn-sm add-cart-btn cart-full" data-name="${item.name}" data-price="${item.priceFull}" data-variant="Full">+ Full</button></div>`;
         }
-        card.innerHTML = `
-          <img class="card-img" src="${imageUrl}" alt="${item.name}" loading="lazy" onerror="this.src='https://placehold.co/400x240/2A241E/F97316?text=${encodeURIComponent(item.name)}'">
-          <div class="card-content">
-            <div class="card-header">
-              <span class="item-name">${item.name}</span>
-              <span class="${item.isVeg ? 'veg-badge' : 'nonveg-badge'}">${item.isVeg ? 'Veg' : 'Non-Veg'}</span>
-            </div>
-            ${descHtml}
-            ${priceHtml}
-            ${actionHtml}
-          </div>
-        `;
+        card.innerHTML = `<img class="card-img" src="${getImageUrl(item)}" alt="${item.name}" loading="lazy" onerror="this.src='https://placehold.co/400x240/2A241E/F97316?text=${encodeURIComponent(item.name)}'"><div class="card-content"><div><span class="item-name">${item.name}</span> <span class="${item.isVeg?'veg-badge':'nonveg-badge'}">${item.isVeg?'Veg':'Non-Veg'}</span></div>${descHtml}${priceHtml}${actionHtml}</div>`;
         grid.appendChild(card);
       });
-      const currGrid = grid;
-      currGrid.querySelectorAll('.wa-order, .wa-half, .wa-full').forEach(btn => {
-        btn.addEventListener('click', () => directWhatsApp(btn.dataset.name, parseInt(btn.dataset.price), btn.dataset.variant));
-      });
-      currGrid.querySelectorAll('.cart-add, .cart-half, .cart-full').forEach(btn => {
-        btn.addEventListener('click', () => addToCart(btn.dataset.name, parseInt(btn.dataset.price), btn.dataset.variant));
-      });
-      sectionIndex++;
+      const btns = grid.querySelectorAll('.wa-order, .wa-half, .wa-full');
+      btns.forEach(b=>b.addEventListener('click',()=>directWhatsApp(b.dataset.name, parseInt(b.dataset.price), b.dataset.variant)));
+      const cartBtns = grid.querySelectorAll('.cart-add, .cart-half, .cart-full');
+      cartBtns.forEach(b=>b.addEventListener('click',()=>addToCart(b.dataset.name, parseInt(b.dataset.price), b.dataset.variant)));
+      idxCat++;
     }
-    const cards = document.querySelectorAll('.food-card');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if(entry.isIntersecting) entry.target.style.opacity = '1'; });
-    }, { threshold: 0.1 });
-    cards.forEach(card => { card.style.opacity = '0'; card.style.transition = 'opacity 0.6s ease'; observer.observe(card); });
   }
 
-  function buildCategoryBar() {
-    const track = document.getElementById('categoryTrack');
-    if(!track) return;
-    const categories = Object.keys(menuData);
-    track.innerHTML = '';
-    categories.forEach((cat, idx) => {
-      const chip = document.createElement('div');
-      chip.className = 'cat-chip';
-      chip.innerHTML = `<i class="fas fa-${idx===0?'bread-slice':idx===1?'bowl-rice':idx===2?'plate-wheat':idx===3?'carrot':'drumstick'}"></i> ${cat}`;
-      chip.addEventListener('click', () => {
-        document.getElementById(`cat-${idx}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-      });
+  function buildCategoryBar(){
+    const track=document.getElementById('categoryTrack'); if(!track) return;
+    const cats=Object.keys(menuData);
+    track.innerHTML='';
+    cats.forEach((cat,idx)=>{
+      const chip=document.createElement('div'); chip.className='cat-chip'; chip.innerHTML=`<i class="fas fa-${idx===0?'bread-slice':idx===1?'bowl-rice':idx===2?'plate-wheat':'carrot'}"></i> ${cat}`;
+      chip.addEventListener('click',()=>{ document.getElementById(`cat-${idx}`)?.scrollIntoView({behavior:'smooth', block:'start'}); document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active')); chip.classList.add('active'); });
       track.appendChild(chip);
     });
   }
 
-  function initModal() {
-    const cartIcon = document.getElementById('cartIcon'), sticky = document.getElementById('stickyCartBtn');
-    const modal = document.getElementById('cartModal'), overlay = document.getElementById('cartOverlay');
-    const close = document.getElementById('closeCart');
-    const open = () => { modal.classList.add('open'); overlay.classList.add('open'); renderCartModal(); };
-    const closeModal = () => { modal.classList.remove('open'); overlay.classList.remove('open'); };
-    cartIcon?.addEventListener('click', open); sticky?.addEventListener('click', open);
-    close?.addEventListener('click', closeModal); overlay?.addEventListener('click', closeModal);
-    document.getElementById('checkoutCartBtn')?.addEventListener('click', () => { checkoutCartWhatsApp(); closeModal(); });
-    document.getElementById('clearCartBtn')?.addEventListener('click', () => clearCart());
-    document.getElementById('upiPayButton')?.addEventListener('click', () => initiateUPIPayment());
+  function initModal(){
+    const modal=document.getElementById('cartModal'), overlay=document.getElementById('cartOverlay');
+    const open=()=>{ modal.classList.add('open'); overlay.classList.add('open'); renderCartModal(); };
+    document.getElementById('cartIcon')?.addEventListener('click',open);
+    document.getElementById('stickyCartBtn')?.addEventListener('click',open);
+    document.getElementById('closeCart')?.addEventListener('click',()=>{ modal.classList.remove('open'); overlay.classList.remove('open'); });
+    overlay?.addEventListener('click',()=>{ modal.classList.remove('open'); overlay.classList.remove('open'); });
+    document.getElementById('checkoutCartBtn')?.addEventListener('click',()=>{ checkoutWhatsApp(); modal.classList.remove('open'); overlay.classList.remove('open'); });
+    document.getElementById('clearCartBtn')?.addEventListener('click',clearCart);
+    document.getElementById('upiPayButton')?.addEventListener('click',upiPay);
   }
-
-  // Initialize everything
-  loadCart();
-  loadReviews();
-  renderFullMenu();
-  buildCategoryBar();
-  initModal();
-  document.getElementById('submitReviewBtn')?.addEventListener('click', () => {
-    const name = document.getElementById('reviewerName').value;
-    const rating = document.getElementById('reviewRating').value;
-    const text = document.getElementById('reviewText').value;
-    addReview(name, rating, text);
-    document.getElementById('reviewText').value = '';
+  
+  loadCart(); loadReviews(); renderFullMenu(); buildCategoryBar(); initModal();
+  document.getElementById('submitReviewBtn')?.addEventListener('click',()=>{
+    addReview(document.getElementById('reviewerName').value, document.getElementById('reviewRating').value, document.getElementById('reviewText').value);
+    document.getElementById('reviewText').value='';
   });
 </script>
 </body>
